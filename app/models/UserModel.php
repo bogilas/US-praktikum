@@ -1,7 +1,7 @@
 <?php
 class UserModel extends BaseModel {
     public static function getAll() {
-        $SQL = 'SELECT * FROM user;';
+        $SQL = 'SELECT * FROM preduzetnik;';
         $prep = DataBase::getInstance()->prepare($SQL);
         $res = $prep->execute();
         if ($res) {
@@ -12,7 +12,7 @@ class UserModel extends BaseModel {
     }
 
     public static function getById($id) {
-        $SQL = 'SELECT * FROM user WHERE user_id = ?;';
+        $SQL = 'SELECT * FROM preduzetnik WHERE preduzetnik_sif = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
         $res = $prep->execute([$id]);
         if ($res) {
@@ -23,7 +23,7 @@ class UserModel extends BaseModel {
     }
 
     public static function getByUsernameAndPasswordHash($username, $passwordHash) {
-        $SQL = 'SELECT * FROM user WHERE `username` = ? AND `password` = ? AND active = 1;';
+        $SQL = 'SELECT * FROM preduzetnik WHERE email = ? AND sifra = ?';
         $prep = DataBase::getInstance()->prepare($SQL);
         $res = $prep->execute([$username, $passwordHash]);
         if ($res) {
