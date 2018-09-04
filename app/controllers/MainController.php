@@ -36,7 +36,7 @@
         }
         
         public function preduzece($preduzece_id) {
-            $preduzece = BaseModel::getCPCompanie($id);
+            $preduzece = BaseModel::getCPCompany($id);
             $this->setData('preduzece', $preduzece);
         }
     }
