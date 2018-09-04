@@ -72,7 +72,7 @@ class BaseModel{
             $locations = $prep->fetchAll(PDO::FETCH_OBJ);
             $data["locations"] = $work_type;
         }else{
-            $data["locations"] => [];
+            $data["locations"] = [];
         }
 
         $SQL = "SELECT NP.cena,P.naziv,P.opis,VP.naziv as naziv_vrsta_proizvoda FROM nudi_proizvod NP, proizvod P, vrsta_proizvoda VP WHERE NP.preduzece_sif = ? AND NP.proizvod_sif=P.proizvod_sif AND P.vrsta_proizvoda_sif = VP.vrsta_proizvoda_sif";
