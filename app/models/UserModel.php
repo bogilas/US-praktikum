@@ -43,4 +43,91 @@ class UserModel extends BaseModel {
             return null;
         }
     }
+    
+    public static function insertCompany($data){
+        $SQL = "INSERT INTO lokacija(opstina_sif, adresa, kordinata_duzina, kordinata_sirina) VALUES (?,?,?,?)";
+        $pdo = DataBase::getInstance();
+        $prep = $pdo->prepare($SQL);
+        $res = $prep->execute([$data['glavna_lokacija'].['opstina_sif'],$data['glavna_lokacija'].['adresa'],$data['glavna_lokacija'].['kordinata_duzina'],$data['glavna_lokacija'].['kordinata_sirina']]);
+        if($res){
+            $main_loc_id = $pdo->lastInsertId();
+            $SQL = "INSERT INTO preduzece(pun_naziv, kratak_naziv, mat_br, pib, sajt_link, telefon, posebne_napomene, preduzetnik_sif,'status',logotip, kratak_opis, glavna_lokacija_sif, glavna_delatnost_sif) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $pdo = DataBase::getInstance();
+            $prep = $pdo->prepare($SQL);
+            $res = $prep->execute([$data['pun_naziv'],$data['kratak_naziv'],$data['mat_br'],$data['pib'],$data['sajt_link'],$data['telefon'],$data['posenbne_napomene'],$data['preduzetnik_sif'],0,$data['logotip'],$data['kratak_opis'],$main_loc_id,$data['glavna_delatnost_sif']]);
+            if($res){
+                $company_id = $pdo->lastInsertId();
+
+                $SQL = "INSERT INTO lokacija(opstina_sif, adresa, kordinata_duzina, kordinata_sirina, preduzece_sif) VALUES (?,?,?,?,?)";
+                foreach($data['lokacije'] as $lokacija){
+                    $prep = DataBase::getInstance()->prepare($SQL);
+                    $res = $prep->execute([$lokacija['opstina_sif'],$lokacija['adresa'],$lokacija['kordinata_duzina'],$lokacija['kordinata_sirina'],$company_id]);
+                }
+
+                $SQL = "INSERT INTO preduzece_delatnost (preduzece_sif,delatnost_sif) VALUES (?,?)";
+                foreach($data['delatnosti'] as $delatnost){
+                    $prep = DataBase::getInstance()->prepare($SQL);
+                    $res = $prep->execute([$company_id,$delatnost]);
+                }
+
+                $SQL = "INSERT INTO telefon (telefon,preduzece_sif) VALUES (?,?)";
+                foreach($data['telefoni'] as $t){
+                    $prep = DataBase::getInstance()->prepare($SQL);
+                    $res = $prep->execute([$t,$company_id]);
+                }
+                
+                $SQL = "INSERT INTO slike (slika,preduzece_sif) VALUES (?,?)";
+                for($data['slike'] as $s){
+                    $prep = DataBase::getInstance()->prepare($SQL);
+                    $res = $prep->execute([$s,$company_id]);
+                }
+
+                $SQL = "INSERT INTO radno_vreme(preduzece_sif,'day',otvara,zatvara) VALUES(?,?,?,?)";
+                foreach($data['radno_vreme'] as $rv){
+                    $prep = DataBase::getIntance()->prepare($SQL);
+                    $res = $prep->execute([$company_id,$rv['day'],$rv['otvara'],$rv['zatvara']]);
+                }
+
+            }else{
+                deleteLocation($main_loc_id);
+            }
+
+        }else{
+            return false;
+        }
+    }
+
+    public static function deleteLocation($id){
+        $SQL = "DELETE FROM lokacija WHERE lokacija_sif = ?";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([$id]);
+    }
+
+    public static function addCompanyProduct($data,$company_id){
+        if(isset($data["naziv"])){
+            $SQL = "INSERT INTO proizvod(naziv,opis,vrsta_proizvoda_sif) VALUES (?,?,?)";
+            $pdo = DataBase::getInstance();
+            $prep = $pdo->prepare($SQL);
+            $res = $prep->execute([$data['naziv'],$data['opis'],$data['vrsta_proizvoda_sif']]);
+            if($res){
+                $id = $pdo->lastInsertId();
+                return setProdToCompany($id,$company_id,$data['cena']);
+            }else{
+                return false;
+            }
+        }else{
+            return setProdToCompany($data['proizvod_sif'],$company_id,$data['cena']);
+        }
+    }
+
+    public static function setProdToCompany($prod_id,$comp_id,$price){
+        $SQL = "INSERT INTO nudi_proizvod (cena,proizvod_sif,preduzece_sif) VALUES (?,?,?)";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([$price,$prod_id,$comp_id]);
+        if($res)
+            return true;
+        else 
+            return false;
+    }
+
 }
