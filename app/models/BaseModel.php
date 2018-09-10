@@ -143,7 +143,13 @@ class BaseModel{
             $parameters[] = $hours;
         }
 
-        
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute($parameters);
+        if ($res) {
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return [];
+        }
         
     }
 
