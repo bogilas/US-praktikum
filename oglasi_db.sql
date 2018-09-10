@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2018 at 04:00 AM
+-- Generation Time: Sep 10, 2018 at 08:22 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -31,7 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `delatnosti` (
   `delatnosti_SIF` int(11) NOT NULL,
   `sifra` varchar(255) NOT NULL,
-  `Naziv` text NOT NULL
+  `Naziv` text CHARACTER SET latin2 COLLATE latin2_croatian_ci NOT NULL,
+  `vrsta_delatnosti_sif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -58,7 +59,7 @@ CREATE TABLE `lokacija` (
   `adresa` varchar(100) NOT NULL,
   `kordinata_duzina` decimal(10,0) NOT NULL,
   `kordinata_sirina` decimal(10,0) NOT NULL,
-  `preduzece_sif` int(11) NOT NULL
+  `preduzece_sif` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -202,6 +203,18 @@ CREATE TABLE `telefon` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vrsta_delatnosti`
+--
+
+CREATE TABLE `vrsta_delatnosti` (
+  `vrsta_delatnosti_sif` int(11) NOT NULL,
+  `naziv` varchar(255) CHARACTER SET latin2 COLLATE latin2_croatian_ci NOT NULL,
+  `vrsta_delatnosti_sifra` varchar(255) CHARACTER SET latin2 COLLATE latin2_croatian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vrsta_proizvoda`
 --
 
@@ -219,7 +232,7 @@ CREATE TABLE `vrsta_proizvoda` (
 --
 ALTER TABLE `delatnosti`
   ADD PRIMARY KEY (`delatnosti_SIF`),
-  ADD UNIQUE KEY `sifra` (`sifra`);
+  ADD KEY `vrsta_del` (`vrsta_delatnosti_sif`);
 
 --
 -- Indexes for table `grad`
@@ -312,6 +325,12 @@ ALTER TABLE `telefon`
   ADD KEY `telefon_preduzece` (`preduzece_sif`);
 
 --
+-- Indexes for table `vrsta_delatnosti`
+--
+ALTER TABLE `vrsta_delatnosti`
+  ADD PRIMARY KEY (`vrsta_delatnosti_sif`);
+
+--
 -- Indexes for table `vrsta_proizvoda`
 --
 ALTER TABLE `vrsta_proizvoda`
@@ -325,7 +344,7 @@ ALTER TABLE `vrsta_proizvoda`
 -- AUTO_INCREMENT for table `delatnosti`
 --
 ALTER TABLE `delatnosti`
-  MODIFY `delatnosti_SIF` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `delatnosti_SIF` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1576;
 
 --
 -- AUTO_INCREMENT for table `grad`
@@ -408,6 +427,12 @@ ALTER TABLE `vrsta_proizvoda`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `delatnosti`
+--
+ALTER TABLE `delatnosti`
+  ADD CONSTRAINT `vrsta_del` FOREIGN KEY (`vrsta_delatnosti_sif`) REFERENCES `vrsta_delatnosti` (`vrsta_delatnosti_sif`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `grad`
