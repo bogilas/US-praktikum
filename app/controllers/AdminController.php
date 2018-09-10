@@ -11,9 +11,12 @@ class AdminController extends Controller{
 
 
     public function odobriZahtev($id){
-        $SQL = "UPDATE preduzece SET 'status' = 1 WHERE preduzece_sif = ?";
-        $prep = DataBase::getInstance()->prepare($SQL);
-        $res = $prep->execute($id);
+        AdminModel::setCompanyActive($id);
+    }
+
+    public function getInactiveCompanies(){
+        $data = AdminModel::getAllInactiveCompanies();
+        $this->setData('preduzeca',$data);
     }
 
 
