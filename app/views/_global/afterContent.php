@@ -39,11 +39,11 @@
   </div>
 </footer>
 
-<script src="<?php echo Configuration::BASE_URL ?>assets/jquery.min.js"></script>
+<script src="<?php echo Configuration::BASE_URL ?>assets/js/jquery.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script src="<?php echo Configuration::BASE_URL ?>assets/bootstrap.min.js"></script>
+<script src="<?php echo Configuration::BASE_URL ?>assets/js/bootstrap.min.js"></script>
 <!-- Custom scripts -->
-<script src="<?php echo Configuration::BASE_URL ?>assets/custom.js"></script>
+<script src="<?php echo Configuration::BASE_URL ?>assets/js/custom.js"></script>
 
 </body>
 

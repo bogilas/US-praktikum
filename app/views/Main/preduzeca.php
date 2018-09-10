@@ -16,10 +16,10 @@
             <div class="col-lg-8 col-md-8 float-left row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-bottom-margin">
                     <div class="ads-item">
-                        <a href="<?php echo Configuration::BASE_URL ?>preduzece/<?php echo htmlspecialchars($preduzece->preduzece_sif) ?>">
+                        <a href="<?php echo Configuration::BASE_URL ?>/preduzece/<?php echo $preduzece->preduzece_sif ?>">
                             <div class="ads-logo">
                               <div class="ads-logo-bg-blur"></div>
-                              <img src="<?php echo $preduzece->logotip ?>" alt="Doslo je do greske prilikom ucitavanja slike">
+                              <img src="<?php echo Configuration::BASE_URL ?><?php echo $preduzece->logotip ?>" alt="Doslo je do greske prilikom ucitavanja slike">
                             </div>
                             <div class="ads-intermid">
                                 <h2 class="ads-title">

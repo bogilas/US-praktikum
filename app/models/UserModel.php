@@ -11,26 +11,6 @@ class UserModel extends BaseModel {
         }
     }
 
-    public static function checkEmailUnique($email){
-        $SQL = "SELECT * FROM preduzetnik WHERE email = ?";
-        $prep = DataBase::getInstance()->prepare($SQL);
-        $res = $prep->execute([$passwordHash]);
-        if ($res) {
-            return $prep->fetch(PDO::FETCH_OBJ);
-        } else {
-            return null;
-        }
-    }
-
-    public static function insertUser($ime,$prezime,$sifra,$telefon,$adresa,$email){
-        $SQL = 'INSERT INTO preduzetnik (ime,prezime,sifra,telefon,adresa,email) VALUES (?,?,?,?,?,?)';
-        $pdo = DataBase::getInstance();
-        $prep = $pdo->prepare($SQL);
-        $res = $prep->execute([$ime,$prezime,$sifra,$telefon,$adresa,$email]);
-        if($res)
-            return $pdo->lastInsertId();
-    }
-
     public static function getById($id) {
         $SQL = 'SELECT * FROM preduzetnik WHERE preduzetnik_sif = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
@@ -97,7 +77,7 @@ class UserModel extends BaseModel {
                 }
                 
                 $SQL = "INSERT INTO slike (slika,preduzece_sif) VALUES (?,?)";
-                for($data['slike'] as $s){
+                foreach($data['slike'] as $s){
                     $prep = DataBase::getInstance()->prepare($SQL);
                     $res = $prep->execute([$s,$company_id]);
                 }

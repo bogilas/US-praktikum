@@ -134,7 +134,7 @@ img::-moz-selection {
   #mainNav.is-fixed {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
-    top: -67px;
+    top: -101px;
     -webkit-transition: -webkit-transform 0.2s;
     -moz-transition: -moz-transform 0.2s;
     transition: transform 0.2s;
@@ -162,26 +162,17 @@ img::-moz-selection {
     transform: translate3d(0, 100%, 0);
   }
 }
-
 header.masthead {
-  margin-bottom: 50px;
-  background: no-repeat center center;
-  background-color: #868e96;
-  background-attachment: scroll;
+  background: url(../../assets/img/cover.png);
   position: relative;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
-
 header.masthead .overlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #212529;
+  background-color: #000000;
   opacity: 0.5;
 }
 
@@ -352,40 +343,32 @@ header.masthead .post-heading .meta a {
   vertical-align: baseline;
   opacity: 0;
 }
-
 .floating-label-form-group .help-block {
   margin: 15px 0;
 }
-
 .floating-label-form-group-with-value label {
   top: 0;
   opacity: 1;
 }
-
 .floating-label-form-group-with-focus label {
   color: #0085A1;
 }
-
 form .form-group:first-child .floating-label-form-group {
   border-top: 1px solid #dee2e6;
 }
-
 footer {
-  padding: 50px 0 65px;
+  padding: 20px 0 30px;
 }
-
 footer .list-inline {
   margin: 0;
   padding: 0;
 }
-
 footer .copyright {
   font-size: 14px;
   margin-bottom: 0;
   text-align: center;
 }
-
-.btn {
+/*.btn {
   font-size: 14px;
   font-weight: 800;
   padding: 15px 25px;
@@ -409,7 +392,7 @@ footer .copyright {
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;
-}
+}*/
 a,
 a:hover,
 a:focus {
@@ -451,7 +434,7 @@ img {
   padding: 5px 10px;
   border-bottom: 1px solid #e6e6e6;
 }
-.ads-intermid .ads-title {
+.ads-intermid .ads-titl {
   font-size: 14px;
   line-height: 16px;
   margin: 0 0 5px 0;
@@ -526,3 +509,46 @@ img {
   font-weight: 400;
   margin-bottom: 7px;
 }
+.pd-sidebar > div {
+    border: 1px solid #dadada;
+    margin-bottom: 10px;
+}
+.pd-sidebar .pd-heading {
+    background-color: #081266;
+    padding: 10px;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+.pd-sidebar .pd-hours .pd-content {
+    padding: 5px 10px;
+}
+.pd-sidebar .pd-hours table {
+    text-align: left;
+    width: 100%;
+}
+.pd-sidebar .pd-hours table tr td {
+    line-height: 30px;
+    border-right: 0;
+    padding: 0;
+    color: #444;
+}
+.pd-sidebar .pd-hours table tr td.day {
+    font-weight: 700;
+}
+.pd-main .pd-pics {
+    margin-bottom: 20px;
+}
+.pd-infos .pd-info-content {
+    padding: 10px;
+    overflow: hidden;
+}
+.pd-infos .pd-info-content p {
+    line-height: 24px;
+    margin: 0 0 24px 0;
+    padding: 0;
+}
+
