@@ -60,7 +60,7 @@
     <!-- Modal -->
       <div class="modal fade" id="prijavaModal" tabindex="-1" role="dialog" aria-labelledby="_prijavaAria" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="/prijava" method="POST">
+            <form action="<?php Configuration::BASE_URL ?>prijava" method="POST">
             <div class="modal-content" id="_prijavaAria">
                 <div class="modal-header">
                     <h5 class="modal-title">Prijava</h5>
@@ -71,11 +71,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="_prijava_email">Email</label>
-                        <input type="email" class="form-control" id="_prijava_email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="peraperic@gmail.com">    
+                        <input type="email" name="email" class="form-control" id="_prijava_email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="peraperic@gmail.com">    
                     </div>
                     <div class="form-group">
                         <label for="_prijava_lozinka">Lozinka</label>
-                        <input type="password" class="form-control" id="_prijava_lozinka" required pattern="^.{6,}$">
+                        <input type="password" name="pass" class="form-control" id="_prijava_lozinka" required pattern="^.{6,}$">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -89,7 +89,7 @@
     </div>
     <div class="modal fade" id="registracijaModal" tabindex="-1" role="dialog" aria-labelledby="_regAria" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="/registracija" method="POST">
+            <form action="<?php Configuration::BASE_URL ?>registracija" method="POST">
             <div class="modal-content" id="_regAria">
                 <div class="modal-header">
                     <h5 class="modal-title">Registracija</h5>
@@ -120,7 +120,7 @@
                         </div>                        
                         <div class="form-group">
                           <label for="_reg_lozinka">Lozinka</label>
-                          <input type="password" name="lozinka" class="form-control" id="_reg_lozinka" required>
+                          <input type="password" name="sifra" class="form-control" id="_reg_lozinka" required>
                         </div>
                 </div>
                 <div class="modal-footer">

@@ -22,10 +22,10 @@ class UserModel extends BaseModel {
         }
     }
 
-    public static function getByUsernameAndPasswordHash($username, $passwordHash) {
+    public static function getByUsernameAndPasswordHash($email, $passwordHash) {
         $SQL = 'SELECT * FROM preduzetnik WHERE email = ? AND sifra = ?';
         $prep = DataBase::getInstance()->prepare($SQL);
-        $res = $prep->execute([$username, $passwordHash]);
+        $res = $prep->execute([$email, $passwordHash]);
         if ($res) {
             return $prep->fetch(PDO::FETCH_OBJ);
         } else {
@@ -128,6 +128,30 @@ class UserModel extends BaseModel {
             return true;
         else 
             return false;
+    }
+
+    public static function insertUser($ime,$prezime,$sifra,$telefon,$adresa,$email){
+        var_dump($ime);
+        $SQL = "INSERT INTO preduzetnik (ime,prezime,sifra,telefon,adresa,email) VALUES (?,?,?,?,?,?)";
+        $pdo = DataBase::getInstance();
+        $prep = $pdo->prepare($SQL);
+        $res = $prep->execute([$ime,$prezime,$sifra,$telefon,$adresa,$email]);
+        var_dump($res);
+        if($res){
+            return $pdo->lastInsertId();
+        }
+    }
+
+
+    public static function checkEmailUnique($email){
+        $SQL = "SELECT * FROM preduzetnik WHERE email = '?'";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([$email]);
+        if($res){
+            return false;
+        }else{
+            return true;
+        }
     }
 
 }

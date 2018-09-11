@@ -31,7 +31,7 @@ class AdminModel extends BaseModel{
             }
             $data["basic_data"] = $basic;
         }else{
-            $data["error" ] = "Nije nadjeno preduzece";
+            $data["error"] = "Nije nadjeno preduzece";
             return $data;
         }
         

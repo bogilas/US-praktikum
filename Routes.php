@@ -21,6 +21,16 @@
             'Method'     => 'preduzece'            
         ],
         [
+            'Pattern'    => '|^prijava/?$|',
+            'Controller' => 'Main',
+            'Method'     => 'prijava'            
+        ],
+        [
+            'Pattern'    => '|^registracija/?$|',
+            'Controller' => 'Guest',
+            'Method'     => 'registracija'            
+        ],
+        [
             'Pattern'    => '|^info/?$|',
             'Controller' => 'Admin',
             'Method'     => 'info'

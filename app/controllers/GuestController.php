@@ -2,7 +2,7 @@
 
 class GuestController extends Controller {
     
-    public static function registracija(){
+    public function registracija(){
         if(!empty($_POST)){
             $ime = filter_input(INPUT_POST, 'ime', FILTER_SANITIZE_STRING);
             $prezime = filter_input(INPUT_POST, 'prezime', FILTER_SANITIZE_STRING);
@@ -12,7 +12,7 @@ class GuestController extends Controller {
             $sifra = filter_input(INPUT_POST, 'sifra', FILTER_SANITIZE_STRING);
 
             $user = UserModel::checkEmailUnique($email);
-            if($user == null){
+            if($user === true){
                 $id = UserModel::insertUser($ime,$prezime,$sifra,$telefon,$adresa,$email);
                 Session::set('user_id', $id);
                 //TODO preduzetnik controler?
