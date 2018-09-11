@@ -48,53 +48,47 @@ class UserModel extends BaseModel {
         $SQL = "INSERT INTO lokacija(opstina_sif, adresa, kordinata_duzina, kordinata_sirina) VALUES (?,?,?,?)";
         $pdo = DataBase::getInstance();
         $prep = $pdo->prepare($SQL);
-        $res = $prep->execute([$data['glavna_lokacija'].['opstina_sif'],$data['glavna_lokacija'].['adresa'],$data['glavna_lokacija'].['kordinata_duzina'],$data['glavna_lokacija'].['kordinata_sirina']]);
+        $res = $prep->execute([$data['opstina'],$data['adresa'],$data['kordinata_duzina'],$data['kordinata_sirina']]);
         if($res){
             $main_loc_id = $pdo->lastInsertId();
             $SQL = "INSERT INTO preduzece(pun_naziv, kratak_naziv, mat_br, pib, sajt_link, telefon, posebne_napomene, preduzetnik_sif,'status',logotip, kratak_opis, glavna_lokacija_sif, glavna_delatnost_sif) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $pdo = DataBase::getInstance();
             $prep = $pdo->prepare($SQL);
-            $res = $prep->execute([$data['pun_naziv'],$data['kratak_naziv'],$data['mat_br'],$data['pib'],$data['sajt_link'],$data['telefon'],$data['posenbne_napomene'],$data['preduzetnik_sif'],0,$data['logotip'],$data['kratak_opis'],$main_loc_id,$data['glavna_delatnost_sif']]);
-            if($res){
-                $company_id = $pdo->lastInsertId();
-
-                $SQL = "INSERT INTO lokacija(opstina_sif, adresa, kordinata_duzina, kordinata_sirina, preduzece_sif) VALUES (?,?,?,?,?)";
-                foreach($data['lokacije'] as $lokacija){
-                    $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute([$lokacija['opstina_sif'],$lokacija['adresa'],$lokacija['kordinata_duzina'],$lokacija['kordinata_sirina'],$company_id]);
-                }
-
-                $SQL = "INSERT INTO preduzece_delatnost (preduzece_sif,delatnost_sif) VALUES (?,?)";
-                foreach($data['delatnosti'] as $delatnost){
-                    $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute([$company_id,$delatnost]);
-                }
-
-                $SQL = "INSERT INTO telefon (telefon,preduzece_sif) VALUES (?,?)";
-                foreach($data['telefoni'] as $t){
-                    $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute([$t,$company_id]);
-                }
+            $res = $prep->execute([$data['punNaziv'],$data['kratakNaziv'],$data['matBr'],$data['pib'],$data['sajtLink'],$data['telefon'],$data['posenbneNapomene'],$data['user'],0,$data['logotip'],$data['kratakOpis'],$main_loc_id,$data['delatnost']]);
+           if($res){
+               $id = $pdo->lastInsertId();
+               $SQL = "INSERT INTO radno_vreme(preduzece_sif,'day',otvara,zatvara) VALUES(?,?,?,?)";
                 
-                $SQL = "INSERT INTO slike (slika,preduzece_sif) VALUES (?,?)";
-                foreach($data['slike'] as $s){
-                    $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute([$s,$company_id]);
-                }
+               $prep = DataBase::getInstance()->prepare($SQL);
+               $res = $prep->execute($id,0,$data['pOd'],$data['pDo']);
+                
+               $prep = DataBase::getInstance()->prepare($SQL);
+               $res = $prep->execute($id,1,$data['uOd'],$data['uDo']);
 
-                $SQL = "INSERT INTO radno_vreme(preduzece_sif,'day',otvara,zatvara) VALUES(?,?,?,?)";
-                foreach($data['radno_vreme'] as $rv){
-                    $prep = DataBase::getIntance()->prepare($SQL);
-                    $res = $prep->execute([$company_id,$rv['day'],$rv['otvara'],$rv['zatvara']]);
-                }
+                
+               $prep = DataBase::getInstance()->prepare($SQL);
+               $res = $prep->execute($id,2,$data['sOd'],$data['sDo']);
 
-            }else{
-                deleteLocation($main_loc_id);
-            }
+                
+               $prep = DataBase::getInstance()->prepare($SQL);
+               $res = $prep->execute($id,0,$data['cOd'],$data['cDo']);
 
-        }else{
-            return false;
-        }
+                
+               $prep = DataBase::getInstance()->prepare($SQL);
+               $res = $prep->execute($id,0,$data['peOd'],$data['peDo']);
+
+                
+               $prep = DataBase::getInstance()->prepare($SQL);
+               $res = $prep->execute($id,0,$data['suOd'],$data['suDo']);
+
+                
+               $prep = DataBase::getInstance()->prepare($SQL);
+               $res = $prep->execute($id,0,$data['neOd'],$data['neDo']);
+               
+               return $id;
+           }else{
+               return null;
+           }
     }
 
     public static function deleteLocation($id){
@@ -155,3 +149,43 @@ class UserModel extends BaseModel {
     }
 
 }
+// if($res){
+//     $company_id = $pdo->lastInsertId();
+
+//     $SQL = "INSERT INTO lokacija(opstina_sif, adresa, kordinata_duzina, kordinata_sirina, preduzece_sif) VALUES (?,?,?,?,?)";
+//     foreach($data['lokacije'] as $lokacija){
+//         $prep = DataBase::getInstance()->prepare($SQL);
+//         $res = $prep->execute([$lokacija['opstina_sif'],$lokacija['adresa'],$lokacija['kordinata_duzina'],$lokacija['kordinata_sirina'],$company_id]);
+//     }
+
+//     $SQL = "INSERT INTO preduzece_delatnost (preduzece_sif,delatnost_sif) VALUES (?,?)";
+//     foreach($data['delatnosti'] as $delatnost){
+//         $prep = DataBase::getInstance()->prepare($SQL);
+//         $res = $prep->execute([$company_id,$delatnost]);
+//     }
+
+//     $SQL = "INSERT INTO telefon (telefon,preduzece_sif) VALUES (?,?)";
+//     foreach($data['telefoni'] as $t){
+//         $prep = DataBase::getInstance()->prepare($SQL);
+//         $res = $prep->execute([$t,$company_id]);
+//     }
+    
+//     $SQL = "INSERT INTO slike (slika,preduzece_sif) VALUES (?,?)";
+//     foreach($data['slike'] as $s){
+//         $prep = DataBase::getInstance()->prepare($SQL);
+//         $res = $prep->execute([$s,$company_id]);
+//     }
+
+//     $SQL = "INSERT INTO radno_vreme(preduzece_sif,'day',otvara,zatvara) VALUES(?,?,?,?)";
+//     foreach($data['radno_vreme'] as $rv){
+//         $prep = DataBase::getIntance()->prepare($SQL);
+//         $res = $prep->execute([$company_id,$rv['day'],$rv['otvara'],$rv['zatvara']]);
+//     }
+
+// }else{
+//     deleteLocation($main_loc_id);
+// }
+
+// }else{
+// return false;
+// }
