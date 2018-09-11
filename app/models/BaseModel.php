@@ -12,6 +12,61 @@ class BaseModel{
         }
     }
 
+    public static function getActivities(){
+        $SQL = "SELECT delatnost_SIF,sifra,Naziv FROM delatnosti";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([]);
+        if($res){
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return [];
+        }
+    }
+
+    public static function getProductTypes(){
+        $SQL = "SELECT vrsta_proizvoda_sif,naziv FROM vrsta_proizvoda";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([]);
+        if($res){
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return [];
+        }
+    }
+
+    public static function getRegions(){
+        $SQL = "SELECT regija_sif,naziv FROM regija";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([]);
+        if($res){
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return [];
+        }
+    }
+    
+    public static function getCities(){
+        $SQL = "SELECT grad_sif,naziv,regija_sif FROM grad";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([]);
+        if($res){
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return [];
+        }
+    }
+
+    public static function getCityParts(){
+        $SQL = "SELECT opstina_sif,naziv,grad_sif FROM opstina";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([]);
+        if($res){
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return [];
+        }
+    }
+
     public static function getCPCompany($id){
         $SQL = "SELECT P.pun_naziv, P.kratak_naziv, P.mat_br, P.pib, P.sajt_link, P.telefon, P.posebne_napomene, P.logotip, P.kratak_opis, D.Naziv as glavna_delatnost, L.adresa,O.naziv as opstina_naziv, G.naziv as grad_naziv, R.naziv as regija_naziv, L.kordinata_duzina, L.kordinata_sirina  FROM preduzece P, delatnosti D, lokacija L, opstina O, grad G, regija R WHERE P.status = 1 AND P.preduzece_sif = ? AND P.glavna_delatnost_sif = D.delatnosti_SIF AND P.glavna_lokacija_sif = L.lokacija_sif AND L.opstina_sif = O.opstina_sif AND O.grad_sif = G.grad_sif AND G.regija_sif = R.regija_sif";
         $prep = DataBase::getInstance()->prepare($SQL);
