@@ -1,5 +1,14 @@
-//(function($) {
-//  "use strict"; // Start of use strict
+(function($) {
+    "use strict"; // Start of use strict
+    
+    $('#_filter_delatnosti, #_filter_vrstaProizvoda, #_filter_regija').selectize({
+        create: false,
+        sortField: 'text'
+    });
+
+})(jQuery); // End of use strict
+
+
 //
 //  // Floating label headings for the contact form
 //  $("body").on("input propertychange", ".floating-label-form-group", function(e) {
@@ -38,4 +47,3 @@
 //      });
 //  }
 //
-//})(jQuery); // End of use strict

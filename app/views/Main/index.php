@@ -1,5 +1,5 @@
 <?php include 'app/views/_global/beforeContent.php'; ?>
-    
+
     <!-- Page Header -->
     <header class="masthead">
       <div class="overlay"></div>
@@ -18,7 +18,11 @@
 
     <!-- Main Content -->
     <div class="container">
-      <div class="row">
+        
+        
+        
+        
+<!--      <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-preview">
             <a href="post.html">
@@ -73,12 +77,12 @@
               on July 8, 2018</p>
           </div>
           <hr>
-          <!-- Pager -->
+           Pager 
           <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
 
 <?php include 'app/views/_global/afterContent.php'; ?>

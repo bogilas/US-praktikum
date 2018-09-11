@@ -41,6 +41,16 @@
             'Method'     => 'odobravanje'
         ],
         [
+            'Pattern'    => '|^ajaxCallCity/([0-9]+)/?$|',
+            'Controller' => 'Main',
+            'Method'     => 'ajaxCityCallResponse'
+        ],
+        [
+            'Pattern'    => '|^ajaxCallDistrict/([0-9]+)/?$|',
+            'Controller' => 'Main',
+            'Method'     => 'ajaxDistrictCallResponse'
+        ],
+        [
             'Pattern'    => '|^.*$|',
             'Controller' => 'Main',
             'Method'     => 'index'

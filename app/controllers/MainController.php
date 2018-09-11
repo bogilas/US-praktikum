@@ -9,14 +9,15 @@
 
                 if ($user) {
                     Session::set('user_id', $user->user_id);
-                    Misc::redirect('preduzeca');
+                    Misc::redirect('');
                 } else {
-                    $this->set('message', 'Nisu dobri login parametri.');
+                    Misc::redirect('');
                     sleep(1);
+                    $this->setData('errorMsg', 'Nisu uneti dobri parametri.');
                 }
             }
         }
-
+        
         public function logout() {
             Session::end();
             Misc::redirect('login');
@@ -24,7 +25,25 @@
         
         public function preduzeca() {
             $preduzeca = BaseModel::getAllMRPCompanies();
+            $delatnosti = BaseModel::getActivities();
+            $proizvodi = BaseModel::getProductTypes();
+            $regioni = BaseModel::getRegions();
+            if(!empty($_POST)){
+                $activity = filter_input(INPUT_POST, '_delatnost', FILTER_SANITIZE_STRING);
+                $type_product = filter_input(INPUT_POST, '_proizvod', FILTER_SANITIZE_STRING);
+                $region= filter_input(INPUT_POST, '_regija', FILTER_SANITIZE_STRING);
+                $city = filter_input(INPUT_POST, '_grad', FILTER_SANITIZE_STRING);
+                $city_part = filter_input(INPUT_POST, '_opstina', FILTER_SANITIZE_STRING);
+                $comp_name = filter_input(INPUT_POST, '_komp_ime', FILTER_SANITIZE_STRING);
+                $day = filter_input(INPUT_POST, '_dan', FILTER_SANITIZE_STRING);
+                $hours = filter_input(INPUT_POST, '_sat', FILTER_SANITIZE_STRING);
+                $preduzeca = BaseModel::getMPCompaniesFiltered($activity,$type_product,$region,$city,$city_part,$comp_name,$day,$hours);
+            }
             $this->setData('preduzeca', $preduzeca);
+            $this->setData('delatnosti', $delatnosti);
+            $this->setData('proizvodi', $proizvodi);
+            $this->setData('regioni', $regioni);
+            
         }
         
         public function preduzece($preduzece_id) {
@@ -43,5 +62,13 @@
             $preduzeca = BaseModel::getMPCompaniesFiltered($activity,$type_product,$region,$city,$city_part,$comp_name,$day,$hours);
             $this->setData('preduzeca',$preduzeca);
             
+        }
+        
+        public function ajaxCityCallResponse($id){
+            $this->setData('gradovi', BaseModel::getCitiesByRegion($id));
+        }
+     
+        public function ajaxDistrictCallResponse($id){
+            $this->setData('opstine', BaseModel::getCityPartsByCity($id));
         }
     }

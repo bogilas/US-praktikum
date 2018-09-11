@@ -43,6 +43,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="<?php echo Configuration::BASE_URL ?>assets/js/bootstrap.min.js"></script>
 <!-- Custom scripts -->
+<script src="<?php echo Configuration::BASE_URL ?>assets/js/selectize.min.js"></script>
 <script src="<?php echo Configuration::BASE_URL ?>assets/js/custom.js"></script>
 
 </body>

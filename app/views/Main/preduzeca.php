@@ -4,10 +4,60 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <div class="col-lg-4 col-md-4 col-xs-12 float-left row">
-              <form method="POST">
-                  
-              </form>
+            <div class="col-lg-4 col-md-4 col-xs-12 float-left row" style="padding: 15px;">
+                <form class="w-100" action="<?php echo Configuration::BASE_URL ?>preduzeca" method="POST">
+                <label for="_filter_delatnosti">Delatnost</label>
+              <select id="_filter_delatnosti" name="_delatnost" class="demo-default selectized" placeholder="Delatnost" tabindex="-1" style="display: none;">
+                  <option value="" selected="selected"></option>
+                    <?php
+                        if (is_array($DATA['delatnosti']))
+                        foreach ($DATA['delatnosti'] as $delatnost):
+                    ?>
+                    <option value="<?php echo $delatnost->delatnosti_SIF ?>">
+                        <?php echo $delatnost->Naziv ?>
+                    </option>
+                    <?php endforeach; ?>
+              </select>
+                <label for="_filter_vrstaProizvoda">Vrsta proizvoda</label>
+                <select id="_filter_vrstaProizvoda" name="_proizvod" class="demo-default selectized" placeholder="Vrsta prozivoda" tabindex="-1" style="display: none;">
+                  <option value="" selected="selected"></option>
+                    <?php
+                        if (is_array($DATA['proizvodi']))
+                        foreach ($DATA['proizvodi'] as $proizvodi):
+                    ?>
+                    <option value="<?php echo $proizvodi->vrsta_proizvoda_sif ?>">
+                        <?php echo $proizvodi->naziv ?>
+                    </option>
+                    <?php endforeach; ?>
+              </select>
+                
+                <label for="_filter_regija">Regija</label>
+                <select id="_filter_regija" name="_regija" onchange="getResCity($(this).val())" placeholder="Izaberite regiju" tabindex="-1" class="selectized" style="display: none;">
+                  <option value="" selected="selected"></option>
+                  <?php 
+                        if (is_array($DATA['regioni']))
+                        foreach ($DATA['regioni'] as $regioni):                  
+                  ?>
+                    <option value="<?php echo $regioni->regija_sif ?>">
+                        <?php echo $regioni->naziv ?>
+                    </option>                  
+                  <?php endforeach; ?>
+              </select>
+                <div class="form-group spec-form">
+                    <label for="_filter_gradovi">Grad</label>
+                    <select class="form-control" name="_grad" onchange="getResDistrict($(this).val())" id="_filter_gradovi" placeholder="Grad">
+                    <option value="" selected="selected"></option>
+                </select>
+                </div>
+                <div class="form-group spec-form">
+                    <label for="_filter_opstina">Opstina</label>
+                    <select class="form-control" name="_opstina" id="_filter_opstina" placeholder="Opstina">
+                    <option value="" selected="selected"></option>
+                </select>
+                </div>
+                
+                <button class="btn btn-info" type="submit">Filtriraj</button>
+                </form>
           </div>
             
             <?php
@@ -48,5 +98,35 @@
         </div>
       </div>
     </div>
+<script>
+    function getResCity($id) {
+        $.ajax({
+            url: '<?php Configuration::BASE_URL ?>ajaxCallCity/' + $id,
+                success: function(results) {
+                    $('#_filter_gradovi option').each(function () {
+                       $(this).remove(); 
+                    });
+                    $('#_filter_gradovi').append(results);
+                },
+                error: function() {
+                    
+                }
+        });
+    }
+    function getResDistrict($id) {
+        $.ajax({
+            url: '<?php Configuration::BASE_URL ?>ajaxCallDistrict/' + $id,
+                success: function(results) {
+                    $('#_filter_opstina option').each(function () {
+                       $(this).remove(); 
+                    });
+                    $('#_filter_opstina').append(results);
+                },
+                error: function() {
+                    
+                }
+        });
+    }    
 
+</script>
 <?php include 'app/views/_global/afterContent.php'; ?>

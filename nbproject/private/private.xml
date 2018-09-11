@@ -4,8 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/opt/lampp/htdocs/bocgilas/app/views/_global/beforeContent.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Admin/info.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/models/BaseModel.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/sys/Misc.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/index.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Admin/odobravanje.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/models/AdminModel.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/app/models/UserModel.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/preduzeca.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/assets/css/custom.css</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/AdminController.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/MainController.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/Routes.php</file>
         </group>
     </open-files>
 </project-private>

@@ -13,9 +13,9 @@ class BaseModel{
     }
 
     public static function getActivities(){
-        $SQL = "SELECT delatnost_SIF,sifra,Naziv FROM delatnosti";
+        $SQL = "SELECT delatnosti_SIF,sifra,Naziv FROM delatnosti";
         $prep = DataBase::getInstance()->prepare($SQL);
-        $res = $prep->execute([]);
+        $res = $prep->execute();
         if($res){
             return $prep->fetchAll(PDO::FETCH_OBJ);
         }else{
@@ -55,11 +55,33 @@ class BaseModel{
             return [];
         }
     }
+    
+        public static function getCitiesByRegion($id){
+        $SQL = "SELECT grad_sif,naziv FROM grad WHERE regija_sif=?";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([$id]);
+        if($res){
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return [];
+        }
+    }
 
     public static function getCityParts(){
         $SQL = "SELECT opstina_sif,naziv,grad_sif FROM opstina";
         $prep = DataBase::getInstance()->prepare($SQL);
         $res = $prep->execute([]);
+        if($res){
+            return $prep->fetchAll(PDO::FETCH_OBJ);
+        }else{
+            return [];
+        }
+    }
+    
+    public static function getCityPartsByCity($id){
+        $SQL = "SELECT opstina_sif,naziv,grad_sif FROM opstina WHERE grad_sif = ?";
+        $prep = DataBase::getInstance()->prepare($SQL);
+        $res = $prep->execute([$id]);
         if($res){
             return $prep->fetchAll(PDO::FETCH_OBJ);
         }else{

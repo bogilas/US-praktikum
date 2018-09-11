@@ -575,4 +575,8 @@ img {
     padding: 4px;
     vertical-align: middle;
 }
+div.selectize-control.single,
+div.spec-form {
+    width: 94%;
+}
 
