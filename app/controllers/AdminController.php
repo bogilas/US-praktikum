@@ -14,9 +14,14 @@ class AdminController extends Controller{
         AdminModel::setCompanyActive($id);
     }
 
-    public function getInactiveCompanies(){
+    public function pregledNeaktivnihPreduzeca(){
         $data = AdminModel::getAllInactiveCompanies();
         $this->setData('preduzeca',$data);
+    }
+
+    public function pregledNeaktivnogPreduzeca($id){
+        $data = AdminModel::getInactiveCompany($id);
+        $this->setData('preduzece',$data);
     }
 
 
