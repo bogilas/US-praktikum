@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <form action="<?php Configuration::BASE_URL ?>novoPreduzece" method="POST">
-                <div class="col-xs-4 col-md-4 col-xs-12 float-left row">
+                <div class="col-lg-4 col-md-4 col-xs-12 float-left row">
                 <div class="form-group">
                     <label for="_punNaziv">Naziv</label>
                     <input type="text" name="_punNaziv" class="form-control" id="_punNaziv" />
@@ -42,17 +42,17 @@
                     <input type="text" name="_kratakOpis" class="form-control" id="_kratakOpis" />
                 </div>                     
                 </div>
-                <div class="col-xs-8 col-md-8 col-xs-12 float-left row">
+                <div class="col-lg-8 col-md-8 col-xs-12 float-left row">
                     <div class="form-group col-xs-4 col-md-4 col-xs-6 float-left">
                         <label for="_adresa">Adresa</label>
                         <input id="_adresa" type="text" class="form-control" name="_adresa" />
                     </div>
   
-                    <div class="form-group col-xs-4 col-md-4 col-xs-6 float-left">
+                    <div class="form-group col-lg-4 col-md-4 col-xs-6 float-left">
                         <label for="_lokacija_sirina">Lokacija sirina</label>
                         <input id="_lokacija_sirina" type="text" class="form-control" name="_lokacija_sirina" />
                     </div>
-                    <div class="form-group col-xs-4 col-md-4 col-xs-6 float-left">
+                    <div class="form-group col-lg-4 col-md-4 col-xs-6 float-left">
                         <label for="_lokacija_duzina">Lokacija duzina</label>
                         <input id="_lokacija_duzina" type="text" class="form-control" name="_lokacija_duzina" />                        
                     </div>

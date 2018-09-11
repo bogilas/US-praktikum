@@ -41,6 +41,31 @@
             'Method'     => 'novoPreduzece'            
         ],
         [
+            'Pattern'    => '|^dodatno/?$|',
+            'Controller' => 'User',
+            'Method'     => 'dodatno'            
+        ],        
+        [
+            'Pattern'    => '|^dodajDelatnost/?$|',
+            'Controller' => 'User',
+            'Method'     => 'dodajDelatnost'            
+        ],
+        [
+            'Pattern'    => '|^dodajProizvod/?$|',
+            'Controller' => 'User',
+            'Method'     => 'dodajProizvod'            
+        ],
+        [
+            'Pattern'    => '|^dodajTelefon/?$|',
+            'Controller' => 'User',
+            'Method'     => 'dodajTelefon'            
+        ],        
+        [
+            'Pattern'    => '|^dodajSliku/?$|',
+            'Controller' => 'User',
+            'Method'     => 'dodajSliku'            
+        ],
+        [
             'Pattern'    => '|^info/?$|',
             'Controller' => 'Admin',
             'Method'     => 'info'

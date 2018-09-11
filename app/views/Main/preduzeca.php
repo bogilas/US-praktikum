@@ -2,6 +2,13 @@
 
     <!-- Main Content -->
     <div class="container">
+    
+              
+        <div class="row">
+            <a href="<?php echo Configuration::BASE_URL ?>">Pocetna</a> /
+            <a href="<?php echo Configuration::BASE_URL ?>preduzeca"><b>Preduzeca</b></a>
+        </div> 
+        
       <div class="row">
         <div class="col-12">
             <div class="col-lg-4 col-md-4 col-xs-12 float-left row" style="padding: 15px;">

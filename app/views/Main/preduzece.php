@@ -8,7 +8,9 @@
 
       <div class="container">
         <div class="row">
-          NAVIGATION TODO TODO TODO
+            <a href="<?php echo Configuration::BASE_URL ?>">Pocetna</a> /
+            <a href="<?php echo Configuration::BASE_URL ?>preduzeca">Preduzeca</a> /
+            <a href="<?php echo Configuration::BASE_URL ?>preduzece"><b>Preduzece</b></a>
         </div>  
 
         <div class="row">

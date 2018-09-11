@@ -46,9 +46,6 @@
                 <a class="nav-link" href="<?php echo Configuration::BASE_URL ?>preduzeca">Preduzeća</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo Configuration::BASE_URL ?>kontakt">Kontakt</a>
-            </li>
-            <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#prijavaModal">
                     Prijava
                 </a>

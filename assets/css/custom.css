@@ -579,4 +579,7 @@ div.selectize-control.single,
 div.spec-form {
     width: 94%;
 }
+.adders a {
+    padding: 10px;
+}
 
