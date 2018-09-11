@@ -21,6 +21,16 @@
             'Method'     => 'preduzece'            
         ],
         [
+            'Pattern'    => '|^info/?$|',
+            'Controller' => 'Admin',
+            'Method'     => 'info'
+        ],
+        [
+            'Pattern'    => '|^odobravanje/([0-9]+)/?$|',
+            'Controller' => 'Admin',
+            'Method'     => 'odobravanje'
+        ],
+        [
             'Pattern'    => '|^.*$|',
             'Controller' => 'Main',
             'Method'     => 'index'

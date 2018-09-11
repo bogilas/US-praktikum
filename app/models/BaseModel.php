@@ -70,7 +70,7 @@ class BaseModel{
         $res = $prep->execute([$id]);
         if($res){
             $locations = $prep->fetchAll(PDO::FETCH_OBJ);
-            $data["locations"] = $work_type;
+            $data["locations"] = $locations;
         }else{
             $data["locations"] = [];
         }

@@ -2,27 +2,31 @@
 
 class AdminController extends Controller{
 
-    public final function __pre() {
-        if (!Session::exists('admin_id')) {
-            //TODO
-            Misc::redirect('logout');
-        }
-    }
+//    public final function __pre() {
+//        if (!Session::exists('admin_id')) {
+//            //TODO
+//            Misc::redirect('logout');
+//        }
+//    }
 
 
     public function odobriZahtev($id){
         AdminModel::setCompanyActive($id);
     }
 
-    public function pregledNeaktivnihPreduzeca(){
+    public function info(){
         $data = AdminModel::getAllInactiveCompanies();
         $this->setData('preduzeca',$data);
     }
 
-    public function pregledNeaktivnogPreduzeca($id){
+    public function odobravanje($id){
         $data = AdminModel::getInactiveCompany($id);
-        $this->setData('preduzece',$data);
+        if($data===false){
+            Misc::redirect('info');
+        }
+        else{    
+            $this->setData('preduzece',$data);
+        }
     }
-
 
 }

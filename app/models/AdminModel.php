@@ -20,12 +20,15 @@ class AdminModel extends BaseModel{
     }
 
     public static function getInactiveCompany($id){
-        $SQL = "SELECT P.pun_naziv, P.kratak_naziv, P.mat_br, P.pib, P.sajt_link, P.telefon, P.posebne_napomene, P.logotip, P.kratak_opis, D.Naziv as glavna_delatnost, L.adresa,O.naziv as opstina_naziv, G.naziv as grad_naziv, R.naziv as regija_naziv, L.kordinata_duzina, L.kordinata_sirina  FROM preduzece P, delatnosti D, lokacija L, opstina O, grad G, regija R WHERE P.preduzece_sif = ? AND P.glavna_delatnost_sif = D.delatnosti_SIF AND P.glavna_lokacija_sif = L.lokacija_sif AND L.opstina_sif = O.opstina_sif AND O.grad_sif = G.grad_sif AND G.regija_sif = R.regija_sif";
+        $SQL = "SELECT P.preduzece_sif, P.pun_naziv, P.kratak_naziv, P.mat_br, P.pib, P.sajt_link, P.telefon, P.posebne_napomene, P.logotip, P.kratak_opis, D.Naziv as glavna_delatnost, L.adresa,O.naziv as opstina_naziv, G.naziv as grad_naziv, R.naziv as regija_naziv, L.kordinata_duzina, L.kordinata_sirina  FROM preduzece P, delatnosti D, lokacija L, opstina O, grad G, regija R WHERE P.status = 0 AND P.preduzece_sif = ? AND P.glavna_delatnost_sif = D.delatnosti_SIF AND P.glavna_lokacija_sif = L.lokacija_sif AND L.opstina_sif = O.opstina_sif AND O.grad_sif = G.grad_sif AND G.regija_sif = R.regija_sif";
         $prep = DataBase::getInstance()->prepare($SQL);
         $res = $prep->execute([$id]);
         $data = [];// = array();
         if($res){
             $basic = $prep->fetch(PDO::FETCH_OBJ);
+            if(!$basic){
+                return false;
+            }
             $data["basic_data"] = $basic;
         }else{
             $data["error" ] = "Nije nadjeno preduzece";
@@ -77,7 +80,7 @@ class AdminModel extends BaseModel{
         $res = $prep->execute([$id]);
         if($res){
             $locations = $prep->fetchAll(PDO::FETCH_OBJ);
-            $data["locations"] = $work_type;
+            $data["locations"] = $locations;
         }else{
             $data["locations"] = [];
         }

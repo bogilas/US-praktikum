@@ -8,7 +8,10 @@
 
       <div class="container">
         <div class="row">
-          NAVIGATION TODO TODO TODO
+            <form action="/odobriZahtev" method="GET">
+                <button class="btn btn-success" type="submit">ODOBRI PREDUZECE</button>
+                <input type="hidden" value="<?php echo $pd->preduzece_sif ?>" />
+            </form>
         </div>  
 
         <div class="row">

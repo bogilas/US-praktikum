@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
           <a class="navbar-brand" href="<?php echo Configuration::BASE_URL ?>">
-              <img class="img-fluid" src="<?php echo Configuration::BASE_URL ?>assets/img/logo.png" >
+              <img class="img-fluid" src="<?php echo Configuration::BASE_URL ?>assets/img/logo.png" alt="Doslo je do greske prilikom ucitavanja slike">
           </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Meni
@@ -58,10 +58,10 @@
     </nav>
 
     <!-- Modal -->
-      <div class="modal fade" id="prijavaModal" tabindex="-1" role="dialog" aria-labelledby="Prijava" aria-hidden="true">
+      <div class="modal fade" id="prijavaModal" tabindex="-1" role="dialog" aria-labelledby="_prijavaAria" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form action="/prijava" method="POST">
-            <div class="modal-content">
+            <div class="modal-content" id="_prijavaAria">
                 <div class="modal-header">
                     <h5 class="modal-title">Prijava</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -87,10 +87,10 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="registracijaModal" tabindex="-1" role="dialog" aria-labelledby="Registracija" aria-hidden="true">
+    <div class="modal fade" id="registracijaModal" tabindex="-1" role="dialog" aria-labelledby="_regAria" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form action="/registracija" method="POST">
-            <div class="modal-content">
+            <div class="modal-content" id="_regAria">
                 <div class="modal-header">
                     <h5 class="modal-title">Registracija</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -131,20 +131,4 @@
             </form>
         </div>        
     </div>
-    
-    <!-- Page Header -->
-    <header class="masthead">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>Bocgilas Komerc</h1>
-              <span class="subheading">Najbolje oglašavanje pravnih lica u regionu</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
     <main>

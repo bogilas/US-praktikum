@@ -104,7 +104,7 @@ class UserModel extends BaseModel {
     }
 
     public static function addCompanyProduct($data,$company_id){
-        if(!isset($data["proizvod_sif"])){
+        if(isset($data["naziv"])){
             $SQL = "INSERT INTO proizvod(naziv,opis,vrsta_proizvoda_sif) VALUES (?,?,?)";
             $pdo = DataBase::getInstance();
             $prep = $pdo->prepare($SQL);
