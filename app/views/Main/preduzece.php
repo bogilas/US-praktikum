@@ -198,7 +198,7 @@
                                         <?php echo $dani[$radno_vreme->day] ?>
                                     </td>
                                     <td class="time">
-                                        <?php echo $radno_vreme->otvara ?> - <?php echo $radno_vreme->zatvara ?>
+                                        <?php echo $radno_vreme->otvara ?>h - <?php echo $radno_vreme->zatvara ?>h
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

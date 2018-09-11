@@ -31,6 +31,16 @@
             'Method'     => 'registracija'            
         ],
         [
+            'Pattern'    => '|^dodajKompaniju/?$|',
+            'Controller' => 'User',
+            'Method'     => 'dodajKompaniju'            
+        ],
+        [
+            'Pattern'    => '|^novoPreduzece/?$|',
+            'Controller' => 'User',
+            'Method'     => 'novoPreduzece'            
+        ],
+        [
             'Pattern'    => '|^info/?$|',
             'Controller' => 'Admin',
             'Method'     => 'info'

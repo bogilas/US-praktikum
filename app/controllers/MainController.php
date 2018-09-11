@@ -24,7 +24,7 @@
         }
         
         public function preduzeca() {
-            $preduzeca = BaseModel::getAllMRPCompanies();
+            $preduzeca;
             $delatnosti = BaseModel::getActivities();
             $proizvodi = BaseModel::getProductTypes();
             $regioni = BaseModel::getRegions();
@@ -35,9 +35,14 @@
                 $city = filter_input(INPUT_POST, '_grad', FILTER_SANITIZE_STRING);
                 $city_part = filter_input(INPUT_POST, '_opstina', FILTER_SANITIZE_STRING);
                 $comp_name = filter_input(INPUT_POST, '_komp_ime', FILTER_SANITIZE_STRING);
-                $day = filter_input(INPUT_POST, '_dan', FILTER_SANITIZE_STRING);
+                $day = filter_input(INPUT_POST, '_dani', FILTER_SANITIZE_STRING);
                 $hours = filter_input(INPUT_POST, '_sat', FILTER_SANITIZE_STRING);
                 $preduzeca = BaseModel::getMPCompaniesFiltered($activity,$type_product,$region,$city,$city_part,$comp_name,$day,$hours);
+            }else{
+                $preduzeca = BaseModel::getAllMRPCompanies();
+            }
+            if(empty($preduzeca)){
+                $this->setData("error", "Nema rezultata za odabranu pretragu.");
             }
             $this->setData('preduzeca', $preduzeca);
             $this->setData('delatnosti', $delatnosti);

@@ -55,10 +55,37 @@
                     <option value="" selected="selected"></option>
                 </select>
                 </div>
-                
+                <div class="form-group spec-form">
+                    <label for="_filter_kompanija">Kompanija</label>
+                    <input type="search" name="_komp_ime" class="form-control" id="_filter_kompanija" placeholder="Ime kompanije">
+                </div>
+                <div class="form-group spec-form">
+                    <label for="_filter_dani">Dani</label>
+                    <select class="form-control" name="_dani" id="_filter_dani" placeholder="Dani">
+                    <option value="" selected="selected">Bilo koji</option>
+                    <option value="0" >Ponedeljak</option>
+                    <option value="1" >Utorak</option>
+                    <option value="2" >Sreda</option>
+                    <option value="3" >Cetvrtak</option>
+                    <option value="4" >Petak</option>
+                    <option value="5" >Subota</option>
+                    <option value="6" >Nedelja</option>
+                </select>
+                </div>
+                <div class="form-group spec-form">
+                    <label for="_filter_vreme">Vreme</label>
+                    <input type="number"  min="0" max="24" name="_sat" class="form-control" placeholder="Radno vreme" >
+                </div>
                 <button class="btn btn-info" type="submit">Filtriraj</button>
                 </form>
           </div>
+            
+        <?php if (isset($DATA['error'])): ?>
+            <div>
+                    <?php echo htmlspecialchars($DATA['error']); ?>
+            </div>
+        <?php endif; ?>
+            
             
             <?php
                 if (is_array($DATA['preduzeca']))

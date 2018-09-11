@@ -170,58 +170,83 @@ class BaseModel{
 
         if($activity != null){
             $pos = strpos($SQL,"FROM");
-            $SQL = substr_replace($SQL, "preduzece_delatnost PD", $pos+4, 0);
-            $SQL += " AND PD.preduzece_sif=P.preduzece_sif AND PD.delatnost_sif= ?";
+            $SQL = substr_replace($SQL, " preduzece_delatnost PD,", $pos+4, 0);
+            $SQL .= " AND PD.preduzece_sif=P.preduzece_sif AND PD.delatnost_sif= ?";
             $parameters[] = $activity;
         }
 
 
         if($type_product != null){
-            $SQL += " AND P.preduzece_sif IN (SELECT NP.preduzece_sif FROM nudi_proizvod NP ,proizvod PR WHERE NP.proizvod_sif = PR.proizvod_sif AND PR.vrsta_proizvoda_sif =?)";
+            $SQL .= " AND P.preduzece_sif IN (SELECT NP.preduzece_sif FROM nudi_proizvod NP ,proizvod PR WHERE NP.proizvod_sif = PR.proizvod_sif AND PR.vrsta_proizvoda_sif =?)";
             $parameters[] = $type_product;
         }
         if($region != null){
-            $SQL += " AND R.regija_sif=?";
+            $SQL .= " AND R.regija_sif=?";
             $parameters[] = $region;
         }
         if($city != null){
-            $SQL += " AND G.grad_sif=?";
+            $SQL .= " AND G.grad_sif=?";
             $parameters[] = $city;
         }
 
         if($city_part != null){
-            $SQL += " AND O.opstina_sif = ?";
+            $SQL .= " AND O.opstina_sif = ?";
             $parameters[] = $city_part;
         }
 
         if($comp_name !=null){
-            $SQL +=" AND (P.kratak_naziv = ? OR P.pun_naziv= ?)";
+            $SQL .=" AND (P.kratak_naziv = ? OR P.pun_naziv= ?)";
             $parameters[] = $comp_name;
             $parameters[] = $comp_name;
         }
 
         if($day != null){
             $pos = strpos($SQL,"FROM");
-            $SQL = substr_replace($SQL, "radno_vreme RV, ", $pos+4, 0);
-            $SQL += " AND RV.preduzece_sif=P.preduzece_sif AND RV.day=?";
+            $SQL = substr_replace($SQL, " radno_vreme RV, ", $pos+4, 0);
+            $SQL .= " AND RV.preduzece_sif=P.preduzece_sif AND RV.day= ? ";
 
             $parameters[] = $day;
 
             if($hours != null){
-                $SQL += " AND RV.otvara<? AND RV.zatvara> ?";
+                $SQL .= " AND RV.otvara< ?  AND RV.zatvara> ?";
+//                $hours = BaseModel::createTimeFromInteger($hours);
                 $parameters[] = $hours;
                 $parameters[] = $hours;
             }
         }else if($hours != null){
             $pos = strpos($SQL,"FROM");
-            $SQL = substr_replace($SQL, "radno_vreme RV, ", $pos+4, 0);
-            $SQL += " AND RV.preduzece_sif=P.preduzece_sif AND RV.otvara<? AND RV.zatvara> ?";
+//            $hours = BaseModel::createTimeFromInteger($hours);
+            $SQL = substr_replace($SQL, " radno_vreme RV, ", $pos+4, 0);
+            $SQL .= " AND RV.preduzece_sif=P.preduzece_sif AND RV.otvara < ? AND RV.zatvara> ?";
             $parameters[] = $hours;
             $parameters[] = $hours;
+            var_dump($parameters);
         }
-
+        
+        if(empty($parameters)){
+            return BaseModel::getAllMRPCompanies();
+        }else{
+            $prep = DataBase::getInstance()->prepare($SQL);
+            $res = $prep->execute($parameters);
+            if ($res) {
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+            } else {
+                return [];
+            }
+        }
         
         
+    }
+    
+    public static function createTimeFromInteger($inp){
+        $hours;
+        if($inp < 10){
+            $hours = "0".$inp.":00:00";
+        }else{
+            $hours = "".$inp.":00:00";
+        }
+        return $hours;
+       
     }
 
 }
