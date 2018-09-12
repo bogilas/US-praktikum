@@ -8,19 +8,24 @@
                 $user = UserModel::getByUsernameAndPasswordHash($email, $password);
 
                 if ($user) {
-                    Session::set('user_id', $user->user_id);
+                    Session::set('user_id', $user->preduzetnik_sif);
                     Misc::redirect('');
                 } else {
-                    Misc::redirect('');
-                    sleep(1);
-                    $this->setData('errorMsg', 'Nisu uneti dobri parametri.');
+                    $user = UserModel::getByUsernameAndPasswordHashAdmin($email, $password);
+                    if($user){
+                        Session::set('admin_id',$user->admin_sif);
+                        Misc::redirect('');
+                    }else{
+                        Session::set('error',"email i sifra ne pripadaju nijednom korisniku");
+                        Miss::redirec('');
+                    }
                 }
             }
         }
         
         public function logout() {
             Session::end();
-            Misc::redirect('login');
+            Misc::redirect('');
         }
         
         public function preduzeca() {
@@ -55,7 +60,7 @@
             $preduzece = BaseModel::getCPCompany($preduzece_id);
             $this->setData('preduzece', $preduzece);
         }
-        //$activity,$type_product,$region,$city,$city_part,$comp_name,$day,$hours)
+        
         public function preduzecaFiltrirana(){
             $activity = filter_input(INPUT_POST, 'activity', FILTER_SANITIZE_STRING);
             $type_product = filter_input(INPUT_POST, 'type_product', FILTER_SANITIZE_STRING);

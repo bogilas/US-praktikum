@@ -15,11 +15,10 @@ class GuestController extends Controller {
             if($user === true){
                 $id = UserModel::insertUser($ime,$prezime,$sifra,$telefon,$adresa,$email);
                 Session::set('user_id', $id);
-                //TODO preduzetnik controler?
-                Misc::redirect('');
+                Misc::redirect('preduzeca');
             }else{
-                //TODO 
-                //return page with errors
+                Session::set('error',"Mail zauzet.");
+                Misc::redirect('');
             }
         }
     } 

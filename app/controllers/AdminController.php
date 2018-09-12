@@ -2,12 +2,11 @@
 
 class AdminController extends Controller{
 
-//    public final function __pre() {
-//        if (!Session::exists('admin_id')) {
-//            //TODO
-//            Misc::redirect('logout');
-//        }
-//    }
+   public final function __pre() {
+       if (!Session::exists('admin_id')) {
+           Misc::redirect('preduzeca');
+       }
+   }
 
 
     public function odobriZahtev($id){
