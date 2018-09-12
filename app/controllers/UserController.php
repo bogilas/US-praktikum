@@ -64,7 +64,6 @@ class UserController extends Controller {
         }
     }
 
-    public function 
 
     public function zavrsiDodavanje(){
         if(!Session::exists('inserting_comp')){
