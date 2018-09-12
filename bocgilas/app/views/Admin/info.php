@@ -2,6 +2,10 @@
 
 <div class="container">
     <div class="row">
+        <h3 class="h3">
+              Odobravanje preduzeca
+          </h3> 
+        
         <div class="col-12">
             <table class="table table-striped">
                 <thead>

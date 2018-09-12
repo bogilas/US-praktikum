@@ -122,27 +122,27 @@
                 <div class="modal-body">
                         <div class="form-group">
                           <label for="_reg_ime">Ime</label>
-                          <input type="text" name="ime" class="form-control" id="_reg_ime" required>
+                          <input type="text" name="ime" class="form-control" id="_reg_ime" required pattern="^[a-zA-Z]{3,20}$">
                         </div>      
                         <div class="form-group">
                           <label for="_reg_prezime">Prezime</label>
-                          <input type="text" name="prezime" class="form-control" id="_reg_prezime" required>
+                          <input type="text" name="prezime" class="form-control" id="_reg_prezime" required pattern="^[a-zA-Z]{5,20}$">
                         </div>
                         <div class="form-group">
                           <label for="_reg_email">Email</label>
-                          <input type="email" name="email" class="form-control" id="_reg_email" required>
+                          <input type="email" name="email" class="form-control" id="_reg_email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         </div>
                         <div class="form-group">
                           <label for="_reg_telefon">Telefon</label>
-                          <input type="text" name="telefon" class="form-control" id="_reg_telefon" required>
+                          <input type="text" name="telefon" class="form-control" id="_reg_telefon" required pattern="^[0-9]{7,15}$">
                         </div>
                         <div class="form-group">
                           <label for="_reg_adresa">Adresa</label>
-                          <input type="text" name="adresa" class="form-control" id="_reg_adresa" required>
+                          <input type="text" name="adresa" class="form-control" id="_reg_adresa" required pattern="^[a-zA-Z0-9]{2,20}$">
                         </div>                        
                         <div class="form-group">
                           <label for="_reg_lozinka">Lozinka</label>
-                          <input type="password" name="sifra" class="form-control" id="_reg_lozinka" required>
+                          <input type="password" name="sifra" class="form-control" id="_reg_lozinka" required pattern="^.{6,}$">
                         </div>
                 </div>
                 <div class="modal-footer">

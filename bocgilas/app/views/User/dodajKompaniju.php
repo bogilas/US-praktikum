@@ -2,6 +2,10 @@
 
 <div class="container">
     <div class="row">
+        <h3 class="h3">
+            Dodaj kompaniju
+        </h3>
+        
         <div class="col-12">
             <form action="<?php Configuration::BASE_URL ?>novoPreduzece" method="POST">
                 <div class="col-lg-4 col-md-4 col-xs-12 float-left row">
@@ -56,9 +60,9 @@
                         <label for="_lokacija_duzina">Lokacija duzina</label>
                         <input id="_lokacija_duzina" type="text" class="form-control" name="_lokacija_duzina" required="required" />                        
                     </div>
-
-                <select id="_filter_delatnosti" name="_delatnost" class="demo-default selectized" placeholder="Delatnost" tabindex="-1" style="display: none;" required="required" >
-                  <option value="" selected="selected"></option>
+                    <label for="_filter_delatnosti">Delatnost</label>
+                <select id="_filter_delatnosti" name="_delatnost" class="demo-default selectized" tabindex="-1" style="display: none;" required="required" >
+                  <option value="" selected="selected">Bilo koja</option>
                     <?php
                         if (is_array($DATA['delatnosti']))
                         foreach ($DATA['delatnosti'] as $delatnost):
@@ -69,9 +73,9 @@
                     <?php endforeach; ?>
               </select>                        
 
-                    
-                <select id="_filter_regija" name="_regija" onchange="getResCity($(this).val())" placeholder="Izaberite regiju" tabindex="-1" class="selectized" style="display: none;" required="required">
-                  <option value="" selected="selected"></option>
+                    <label for="_filter_delatnosti">Regija</label>
+                <select id="_filter_regija" name="_regija" onchange="getResCity($(this).val())"  tabindex="-1" class="selectized" style="display: none;" required="required">
+                  <option value="" selected="selected">Bilo koja</option>
                   <?php 
                         if (is_array($DATA['regioni']))
                         foreach ($DATA['regioni'] as $regioni):                  
@@ -83,53 +87,51 @@
               </select>
                 <div class="form-group spec-form">
                     <label for="_filter_gradovi">Grad</label>
-                    <select class="form-control" name="_grad" onchange="getResDistrict($(this).val())" id="_filter_gradovi" placeholder="Grad" required="required">
-                    <option value="" selected="selected"></option>
+                    <select class="form-control" name="_grad" onchange="getResDistrict($(this).val())" id="_filter_gradovi" required="required">
+                    <option value="" selected="selected">Bilo koja</option>
                 </select>
                 </div>
                 <div class="form-group spec-form">
                     <label for="_filter_opstina">Opstina</label>
-                    <select class="form-control" name="_opstina" id="_filter_opstina" placeholder="Opstina" required="required">
-                    <option value="" selected="selected"></option>
-                </select>
-                    
-                    <div class="form-group">
-                        <span>Ponedeljak</span>
-                        <input type="number" min="0" max="24" name="_pOd">
-                        <input type="number" min="0" max="24" name="_pDo">
-                    </div>
-                    <div class="form-group">
-                        <span>Utorak</span>
-                        <input type="number" min="0" max="24" name="_uOd">
-                        <input type="number" min="0" max="24" name="_uDo">
-                    </div>
-                    <div class="form-group">
-                        <span>Sreda</span>
-                        <input type="number" min="0" max="24" name="_sOd">
-                        <input type="number" min="0" max="24" name="_sDo">
-                    </div>
-                    <div class="form-group">
-                        <span>Cetvrtak</span>
-                        <input type="number" min="0" max="24" name="_cOd">
-                        <input type="number" min="0" max="24" name="_cDo">
-                    </div>
-                    <div class="form-group">
-                        <span>Petak</span>
-                        <input type="number" min="0" max="24" name="_peOd">
-                        <input type="number" min="0" max="24" name="_peDo">
-                    </div>
-                    <div class="form-group">
-                        <span>Subota</span>
-                        <input type="number" min="0" max="24" name="_suOd">
-                        <input type="number" min="0" max="24" name="_suDo">
-                    </div>
-                    <div class="form-group">
-                        <span>Nedelja</span>
-                        <input type="number" min="0" max="24" name="_neOd">
-                        <input type="number" min="0" max="24" name="_neDo">
-                    </div>
-                    
+                    <select class="form-control" name="_opstina" id="_filter_opstina"  required="required">
+                    <option value="" selected="selected">Bilo koja</option>
+                </select>                    
                 </div>
+                    <div class="form-group mr-2">
+                        <span>Ponedeljak</span>
+                        <input type="number" class="form-control mb-2" min="0" max="24" name="_pOd">
+                        <input type="number" class="form-control" min="0" max="24" name="_pDo">
+                    </div>
+                    <div class="form-group mr-2">
+                        <span>Utorak</span>
+                        <input type="number" class="form-control mb-2" min="0" max="24" name="_uOd">
+                        <input type="number" class="form-control" min="0" max="24" name="_uDo">
+                    </div>
+                    <div class="form-group mr-2">
+                        <span>Sreda</span>
+                        <input type="number" class="form-control mb-2" min="0" max="24" name="_sOd">
+                        <input type="number" class="form-control" min="0" max="24" name="_sDo">
+                    </div>
+                    <div class="form-group mr-2">
+                        <span>Cetvrtak</span>
+                        <input type="number" class="form-control mb-2" min="0" max="24" name="_cOd">
+                        <input type="number" class="form-control" min="0" max="24" name="_cDo">
+                    </div>
+                    <div class="form-group mr-2">
+                        <span>Petak</span>
+                        <input type="number" class="form-control mb-2" min="0" max="24" name="_peOd">
+                        <input type="number" class="form-control" min="0" max="24" name="_peDo">
+                    </div>
+                    <div class="form-group mr-2">
+                        <span>Subota</span>
+                        <input type="number" class="form-control mb-2" min="0" max="24" name="_suOd">
+                        <input type="number" class="form-control" min="0" max="24" name="_suDo">
+                    </div>
+                    <div class="form-group mr-2">
+                        <span>Nedelja</span>
+                        <input type="number" class="form-control mb-2" min="0" max="24" name="_neOd">
+                        <input type="number" class="form-control" min="0" max="24" name="_neDo">
+                    </div>
                 </div>
                 <button class="btn btn-success" type="submit">Dalje</button>
             </form>

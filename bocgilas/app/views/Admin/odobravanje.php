@@ -7,6 +7,8 @@
 
 
       <div class="container">
+          
+          
         <div class="row">
             <a class="btn btn-success" href="<?php echo Configuration::BASE_URL ?>odobriZahtev/<?php echo $pd->preduzece_sif ?>">ODOBRI PREDUZECE</a>
         </div>  

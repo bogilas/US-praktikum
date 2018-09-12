@@ -72,41 +72,36 @@ class UserModel extends BaseModel {
                 $id = $pdo->lastInsertId();
                 $SQL = "INSERT INTO radno_vreme (preduzece_sif,`day`,otvara,zatvara) VALUES(?,?,?,?)";
                 
-                if(($data['pOd']!=null) && ($data['pOd']!=null)){
+                if(($data['pOd']!=null) && ($data['pDo']!=null)){
                     $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute($id,0,$data['pOd'],$data['pDo']);
+                    $res = $prep->execute([$id,0,$data['pOd'],$data['pDo']]);
                 }
-
-                if(($data['uOd']!=null) && ($data['uOd']!=null)){
+                if(($data['uOd']!=null) && ($data['uDo']!=null)){
                     $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute($id,1,$data['uOd'],$data['uDo']);
+                    $res = $prep->execute([$id,1,$data['uOd'],$data['uDo']]);
                 }
-                
-                if(($data['sOd']!=null) && ($data['sOd']!=null)){
+                if(($data['sOd']!=null) && ($data['sDo']!=null)){
                     $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute($id,2,$data['sOd'],$data['sDo']);
+                    $res = $prep->execute([$id,2,$data['sOd'],$data['sDo']]);
                 }
                
-               if(($data['cOd']!=null) && ($data['cOd']!=null)){
+               if(($data['cOd']!=null) && ($data['cDo']!=null)){
                     $prep = DataBase::getInstance()->prepare($SQL);
-                    $res = $prep->execute($id,0,$data['cOd'],$data['cDo']);
+                    $res = $prep->execute([$id,3,$data['cOd'],$data['cDo']]);
                }
-               
-               if(($data['peOd']!=null) && ($data['peOd']!=null)){
+               if(($data['peOd']!=null) && ($data['peDo']!=null)){
                 $prep = DataBase::getInstance()->prepare($SQL);
-                $res = $prep->execute($id,0,$data['peOd'],$data['peDo']);
+                $res = $prep->execute([$id,4,$data['peOd'],$data['peDo']]);
                }
-
-               if(($data['suOd']!=null) && ($data['suOd']!=null)){
+               if(($data['suOd']!=null) && ($data['suDo']!=null)){
                 $prep = DataBase::getInstance()->prepare($SQL);
-                $res = $prep->execute($id,0,$data['suOd'],$data['suDo']);
+                $res = $prep->execute([$id,5,$data['suOd'],$data['suDo']]);
                }
-
-               if(($data['neOd']!=null) && ($data['neOd']!=null)){
+               if(($data['neOd']!=null) && ($data['neDo']!=null)){
                 $prep = DataBase::getInstance()->prepare($SQL);
-                $res = $prep->execute($id,0,$data['neOd'],$data['neDo']);
+                $res = $prep->execute([$id,6,$data['neOd'],$data['neDo']]);
                }
-               return $id;
+            return $id;
 
            }else{
                return null;

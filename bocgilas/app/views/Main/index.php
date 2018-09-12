@@ -42,7 +42,7 @@
                                         <br/>
                                         Delatnost: <strong><?php echo $preduzece->glavna_delatnost ?></strong>
                                         <br />
-                                        Sajt: <strong onclick="window.open('https://<?php echo $preduzece->sajt_link ?>')"><?php echo $preduzece->sajt_link ?></strong>
+                                        Sajt: <strong onclick="window.open('http://<?php echo $preduzece->sajt_link ?>')"><?php echo $preduzece->sajt_link ?></strong>
                                     </div>
                                 </div>
                             </a>

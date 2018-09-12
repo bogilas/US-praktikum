@@ -4,7 +4,7 @@
             'Pattern'    => '|^login/?$|',
             'Controller' => 'Main',
             'Method'     => 'login'
-        ],
+        ], 
         [
             'Pattern'    => '|^logout/?$|',
             'Controller' => 'Main',

@@ -17,10 +17,10 @@
           <div class="col-lg-12">
             <div class="ads-table">
               <div class="cell-left ads-table-cell cell-align-top">
-                  <img src="<?php echo Configuration::BASE_URL ?><?php echo $pd->logotip ?>" alt="Doslo je do greske prilikom ucitavanja slike">
+                  <img src="<?php echo Configuration::BASE_URL ?>assets/img/logo_preduzeca/<?php echo $pd->preduzece_sif ?>.jpg" alt="Doslo je do greske prilikom ucitavanja slike">
               </div>
               <div class="cell-right ads-table-cell cell-align-top">
-                  <h1 class="ads-titl">
+                  <h1 class="ads-titl cp-titl">
                       <?php echo $pd->pun_naziv ?>
                   </h1>
                 <div class="ads-category">
@@ -45,7 +45,7 @@
                     </li>
                     <li>
                         <strong>Sajt preduzeca:</strong>
-                        <a href="<?php echo $pd->sajt_link ?>" target="_blank">
+                        <a href="http://<?php echo $pd->sajt_link ?>" target="_blank">
                             <?php echo $pd->sajt_link ?>
                         </a>
                     </li>
@@ -126,6 +126,21 @@
                         </div>
                     </div>
                     <div class="pd-pics">
+                        <h2 class="pd-heading">Slike</h2>
+                        <div class="pd-content">
+                            <div class="pd-spec-grid">
+                                <?php
+                                    if (is_array($DATA['preduzece']['images']))
+                                        foreach ($DATA['preduzece']['images'] as $slika):
+                                ?>
+                                    <div class="grider">
+                                        <img class="img-fluid" src="<?php echo Configuration::BASE_URL ?><?php $slika->slika ?>" alt="Doslo je do greske prilikom ucitavanja slike">
+                                    </div>
+                                <?php endforeach; ?>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd-pics">
                         <h2 class="pd-heading">Proizvodi</h2>
                         <div class="pd-content">
                             <div class="pd-content">
@@ -162,22 +177,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="pd-pics">
-                        <h2 class="pd-heading">Slike</h2>
-                        <div class="pd-content">
-                            <div class="pd-spec-grid">
-                                <?php
-                                    if (is_array($DATA['preduzece']['images']))
-                                        foreach ($DATA['preduzece']['images'] as $slika):
-                                ?>
-                                    <div class="grider">
-                                        <img class="img-fluid" src="<?php echo Configuration::BASE_URL ?><?php echo $slike->slika ?>" alt="Doslo je do greske prilikom ucitavanja slike">
-                                    </div>
-                                <?php endforeach; ?>                                
-                            </div>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>            
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

@@ -2,8 +2,8 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 10, 2018 at 10:36 PM
+-- Host: localhost
+-- Generation Time: Sep 12, 2018 at 06:35 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `oglasi_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_sif` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `sifra` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_sif`, `email`, `sifra`) VALUES
+(1, 'admin@admin.com', '123123');
 
 -- --------------------------------------------------------
 
@@ -1466,7 +1485,9 @@ CREATE TABLE `grad` (
 --
 
 INSERT INTO `grad` (`grad_sif`, `naziv`, `regija_sif`) VALUES
-(1, 'Novi Sad', 1);
+(1, 'Novi Sad', 1),
+(2, 'Beograd', 2),
+(3, 'Subotica', 1);
 
 -- --------------------------------------------------------
 
@@ -1489,7 +1510,21 @@ CREATE TABLE `lokacija` (
 
 INSERT INTO `lokacija` (`lokacija_sif`, `opstina_sif`, `adresa`, `kordinata_duzina`, `kordinata_sirina`, `preduzece_sif`) VALUES
 (1, 1, 'Knez Mihajo 1', '1234214', '1213321', NULL),
-(2, 1, 'Adresa 2 ', '21341324', '12341324', 1);
+(11, 1, '324124243', '23143124', '21341234', NULL),
+(13, 1, '12341234', '234124', '34121324', NULL),
+(14, 1, '12341234', '234124', '34121324', NULL),
+(15, 2, 'Patrijarha Gavrila 6 (Tehni?ki fakulteti), Vra?ar', '1111', '1111', NULL),
+(16, 3, 'Kosovska 6', '3333', '3333', NULL),
+(17, 4, 'Ustani?ka 194', '6666', '6666', NULL),
+(18, 5, 'Požeška 83', '3232', '2323', NULL),
+(19, 1, 'test 1b', '0', '0', NULL),
+(20, 3, 'tst', '0', '0', NULL),
+(21, 5, 'Kraljice Katarine 104', '8888', '7777', NULL),
+(22, 2, 'Baštovanska 59', '232311', '90923', NULL),
+(23, 6, 'Nemanjina 4', '77788', '7887', NULL),
+(24, 1, 'aaa', '3434', '434', NULL),
+(25, 5, 'Lješka 58', '6766', '66776', NULL),
+(26, 7, 'Paunova 30/13', '787877', '77887', NULL);
 
 -- --------------------------------------------------------
 
@@ -1503,13 +1538,6 @@ CREATE TABLE `nudi_proizvod` (
   `proizvod_sif` int(11) NOT NULL,
   `preduzece_sif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `nudi_proizvod`
---
-
-INSERT INTO `nudi_proizvod` (`nudi_proizvod_sif`, `cena`, `proizvod_sif`, `preduzece_sif`) VALUES
-(1, 'koliko das', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1528,7 +1556,14 @@ CREATE TABLE `opstina` (
 --
 
 INSERT INTO `opstina` (`opstina_sif`, `naziv`, `grad_sif`) VALUES
-(1, 'Centar', 1);
+(1, 'Centar', 1),
+(2, 'Vracar', 2),
+(3, 'Stari grad', 2),
+(4, 'Konjarnik', 2),
+(5, 'Banovo brdo', 2),
+(6, 'Savski venac', 2),
+(7, 'Banjica', 2),
+(8, 'Subotica', 3);
 
 -- --------------------------------------------------------
 
@@ -1558,7 +1593,17 @@ CREATE TABLE `preduzece` (
 --
 
 INSERT INTO `preduzece` (`preduzece_sif`, `pun_naziv`, `kratak_naziv`, `mat_br`, `pib`, `sajt_link`, `telefon`, `posebne_napomene`, `preduzetnik_sif`, `status`, `logotip`, `kratak_opis`, `glavna_lokacija_sif`, `glavna_delatnost_sif`) VALUES
-(1, 'Digitalna i ofset stampa pogon', 'Digitalni pogon', '123123123123', '123123123123', 'www.pogon.rs', '0629684119', 'Stampa i jak pogon.', 1, 1, '/slike/perinLogotip', 'Sve jaci pogon digitalizacije u ovom svetu. Parne masine su idalje true masine.', 1, 1585);
+(4, 'Digitalna i ofset stampa - Pogon', 'Pogon', '12345', '54321', 'www.pogon.rs', '063/336-054', 'Osnovana: 2005. godine', 4, 1, 'pogon.jpg', 'ŠTAMPARIJA I KOPIRNICA POGON se nalazi na Vra?aru, 50m od tehni?kih fakulteta (Arhitektura, Gra?evina, ETF i Mašinski) blizu Vukovog spomenika.', 15, 1906),
+(5, 'Kozmeticki salon Terra Esthetica', 'Terra Estheticha', '6789', '9865', 'www.terra-esthetica.rs', '063/63-20-83', ' Terra Esthetica je kozmeti?ki salon posve?en nezi lica i tela.', 4, 1, 'terra.jpg', 'Verujemo da lepota izvire iz sklada, zdravlja i zadovoljstva, a da se održava stalnom brigom i kvalitetnim preparatima. Mi spajamo dobar ose?aj i dobar izgled,  nauku i prirodu. Mi ?inimo da lepota bude vidljiva.', 16, 2967),
+(6, 'Ovlasceni Elektrolux servis', 'AEG - ZANUSSI', '8900', '0098', 'www.elektroluks.co.rs', '063/267-743', 'Mi smo ovlaš?eni servis bele tehnike za brendove:  - ELECTROLUX  - AEG  - ZANUSSI  - INDESIT I ARISTON  - LG ', 4, 1, '6.jpg', 'Ovlaš?eni ELECTROLUX servis je firma sa preko 10 godina iskustva u servisiranju bele tehnike, sa sedištem u Beogradu, Ustani?ka 194.', 17, 2021),
+(7, 'Roda Cineplexx', 'Cineplexx', '0909', '9090', 'www.rodacineplex.com', '011/2545-260', 'Roda Cineplex je kompletno renoviran 2002. godine kada je u prostoru starog bioskopa izgra?en moderan cineplex sa tri bioskopske sale, ukupnog kapaciteta 387 mesta i širokim foajeom u kom je smešten kafe bioskopa.', 4, 1, '7.jpg', 'Roda Cineplex ?esto ugoš?ava filmske umetnike i radnike u kulturi. Kod nas se realizuju premijere igranih i dokumentarnih filmova, organizuju se konferencije za štampu, ', 18, 2926),
+(8, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 4, 0, '5.jpg', 'test', 19, 2718),
+(10, 'Gradski veseraj', 'Hemijsko ?iš?enje Beograd', '5665', '6556', 'www.gradskiveseraj.com', '064/456-3513', ' U našoj perionici veša Gradski vešeraj možete dobiti usluge: - pranja veša - sušenja veša - peglanja veša - hemijsko ?iš?enje', 4, 1, '8.png', 'Spremni smo da dokažemo zašto smo na tržištu i da zadobijemo Vaše poverenje.  Savremena perionica veša sa ciljem pružanjem usluga visokog kvaliteta.', 21, 2966),
+(11, 'GAS EXPRES PLUS D.O.O', 'Gas, gasna tehnika Beograd', '0009', '9000', 'www.gasexpres.rs', '063/261-561', 'Dostava gasa (plina) za doma?instva', 4, 1, '9.png', '- dostava plinskih boca na adresu  - mogu?nost pla?anja preko ra?una - prate?a oprema - prodaja tehni?kih gasova (industrija)', 22, 1651),
+(12, 'Cvecara Kuca Cveca', 'Kuca Cveca', '90999', '00990', 'www.kucacveca.rs', '062/8227-370', '&#34;Ku?a cve?a&#34; uvek daje sve od sebe da svaki cvet u buketu za vaše voljene bude savršen, da buket uvek bude svež i lep kao i da uvek stigne na vreme.', 4, 1, '12.jpg', 'Izra?ujemo bukete po želji za kancelarije, agencije, ordinacije i ostale poslovne prostore, restorane, kafi?e, klubove, ro?endane, krštenja, promocije, proslave godišnjica, razne bukete za stambene prostore..', 23, 2437),
+(13, 'proba', 'proba', '222', '222', 'proba.com', 'probaa', 'proba', 4, 0, '5.jpg', 'probaaa', 24, 2718),
+(14, 'Trubina DOO', 'Agregati Beograd', '555567', '76555', 'www.turbina-group.com', '063/276-956', ' Preduze?e Turbina je osnovano 1990 godine i uspešno se bavimo proizvodnjom, prodajom, montažom servisiranjem i održavanjem velikih agregatskih postrojenja.', 4, 1, '13.jpg', '30 godina iskustva u ovom poslu garantuje Vam kvalitet i pouzdanost koju nudimo za naše proizvode i usluge.', 25, 2056),
+(15, 'Foto Luka', 'Fotografske radnje Beograd', '555665', '6767676', 'www.fotoluka.com', '069/266-33-22', ' NOVO JASTUK SA VAŠIM SLIKAMA - CENA 900DIN', 4, 1, '14.jpg', '* POŠALJITE SLIKE OD KU?E PREKO OBRAZCA SA NAŠEM SAJTU    - besplatna dostava na ku?nu adresu * DIGITALNA IZRADA FOTOGRAFIJA SA SVIH MEDIJA * IZRADA FOTOGRAFIJA SA MOBILNIH TELEFONA * FOTOGRAFIJE ZA LICNA DOKUMENTA ZA 5 MINUTA * ŠTAMPANJE NA FOTO I MAGI?NIM ŠOLJAMA * RADIMO PUZZLE A4 /120 DELOVA/ I SRCE /A5 75 DELOVA/ * MAJCE SA VAŠIM LIKOM...', 26, 2812);
 
 -- --------------------------------------------------------
 
@@ -1571,13 +1616,6 @@ CREATE TABLE `preduzece_delatnost` (
   `preduzece_sif` int(11) NOT NULL,
   `delatnost_sif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `preduzece_delatnost`
---
-
-INSERT INTO `preduzece_delatnost` (`preduzece_delatnost_sif`, `preduzece_sif`, `delatnost_sif`) VALUES
-(1, 1, 1578);
 
 -- --------------------------------------------------------
 
@@ -1600,7 +1638,12 @@ CREATE TABLE `preduzetnik` (
 --
 
 INSERT INTO `preduzetnik` (`preduzetnik_sif`, `ime`, `email`, `prezime`, `telefon`, `adresa`, `sifra`) VALUES
-(1, 'Pera', 'peric@pera.com', 'Peric', '0629684119', 'kraljevskih brigada 6', 'perinasifra');
+(1, 'Pera', 'peric@pera.com', 'Peric', '0629684119', 'kraljevskih brigada 6', 'perinasifra'),
+(2, 'bogi', 'sogi@logi.com', 'dogi', 'zovi tbr', 'bratovska 420', '123123'),
+(3, 'Kosta', 'pljoska@koska.com', 'Tosta', '44545', 'blalalala', '123456789'),
+(4, 'test', 'test@test.com', 'test', '123', '123', '123123'),
+(5, '123123', 'bogi@aa.com', '123123', '123323224', 'adadadasdas 23', '123123'),
+(6, 'Igor', 'bogi@aa.cp', 'Stricevic', '343433312', 'weqeqweqwe', '123123');
 
 -- --------------------------------------------------------
 
@@ -1632,8 +1675,8 @@ CREATE TABLE `radno_vreme` (
   `readno_vreme_sif` int(11) NOT NULL,
   `preduzece_sif` int(11) NOT NULL,
   `day` int(11) NOT NULL,
-  `otvara` time NOT NULL,
-  `zatvara` time NOT NULL
+  `otvara` int(11) NOT NULL,
+  `zatvara` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1641,13 +1684,48 @@ CREATE TABLE `radno_vreme` (
 --
 
 INSERT INTO `radno_vreme` (`readno_vreme_sif`, `preduzece_sif`, `day`, `otvara`, `zatvara`) VALUES
-(1, 1, 0, '07:00:00', '20:00:00'),
-(2, 1, 1, '07:00:00', '20:00:00'),
-(3, 1, 2, '07:00:00', '20:00:00'),
-(4, 1, 3, '07:00:00', '20:00:00'),
-(5, 1, 4, '07:00:00', '20:00:00'),
-(6, 1, 5, '07:00:00', '20:00:00'),
-(7, 1, 6, '07:00:00', '13:00:00');
+(11, 7, 0, 12, 23),
+(12, 7, 1, 12, 23),
+(13, 7, 2, 12, 23),
+(14, 7, 3, 12, 23),
+(15, 4, 0, 7, 16),
+(16, 4, 1, 7, 16),
+(17, 5, 0, 10, 23),
+(18, 5, 1, 10, 23),
+(19, 6, 0, 8, 21),
+(20, 6, 1, 8, 21),
+(21, 8, 0, 23, 23),
+(22, 8, 1, 23, 23),
+(23, 10, 0, 10, 18),
+(24, 10, 1, 10, 18),
+(25, 10, 2, 10, 18),
+(26, 10, 3, 10, 18),
+(27, 10, 4, 10, 18),
+(28, 10, 5, 10, 18),
+(29, 11, 0, 8, 17),
+(30, 11, 1, 8, 17),
+(31, 11, 2, 8, 17),
+(32, 11, 3, 8, 17),
+(33, 11, 4, 8, 17),
+(34, 11, 5, 8, 15),
+(35, 12, 0, 9, 20),
+(36, 12, 1, 9, 20),
+(37, 12, 2, 9, 20),
+(38, 12, 3, 9, 20),
+(39, 12, 4, 9, 20),
+(40, 12, 5, 9, 20),
+(41, 13, 0, 2, 23),
+(42, 13, 1, 1, 23),
+(43, 14, 0, 8, 16),
+(44, 14, 1, 8, 16),
+(45, 14, 2, 8, 16),
+(46, 14, 3, 8, 16),
+(47, 14, 4, 8, 16),
+(48, 15, 0, 8, 20),
+(49, 15, 1, 8, 20),
+(50, 15, 2, 7, 20),
+(51, 15, 3, 7, 20),
+(52, 15, 4, 8, 20);
 
 -- --------------------------------------------------------
 
@@ -1665,7 +1743,8 @@ CREATE TABLE `regija` (
 --
 
 INSERT INTO `regija` (`regija_sif`, `naziv`) VALUES
-(1, 'Vojvodina');
+(1, 'Vojvodina'),
+(2, 'Beogradski okrug');
 
 -- --------------------------------------------------------
 
@@ -1679,14 +1758,6 @@ CREATE TABLE `slike` (
   `preduzece_sif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `slike`
---
-
-INSERT INTO `slike` (`slike_sif`, `slika`, `preduzece_sif`) VALUES
-(1, '/slike/slika.jpg', 1),
-(2, '/slike/slike2.jpg', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -1698,14 +1769,6 @@ CREATE TABLE `telefon` (
   `telefon` varchar(100) NOT NULL,
   `preduzece_sif` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `telefon`
---
-
-INSERT INTO `telefon` (`telefon_sif`, `telefon`, `preduzece_sif`) VALUES
-(1, '0421345125', 1),
-(2, '3424324', 1);
 
 -- --------------------------------------------------------
 
@@ -1779,6 +1842,12 @@ INSERT INTO `vrsta_proizvoda` (`vrsta_proizvoda_sif`, `naziv`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_sif`);
 
 --
 -- Indexes for table `delatnosti`
@@ -1894,6 +1963,12 @@ ALTER TABLE `vrsta_proizvoda`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `delatnosti`
 --
 ALTER TABLE `delatnosti`
@@ -1903,13 +1978,13 @@ ALTER TABLE `delatnosti`
 -- AUTO_INCREMENT for table `grad`
 --
 ALTER TABLE `grad`
-  MODIFY `grad_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `grad_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lokacija`
 --
 ALTER TABLE `lokacija`
-  MODIFY `lokacija_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `lokacija_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `nudi_proizvod`
@@ -1921,25 +1996,25 @@ ALTER TABLE `nudi_proizvod`
 -- AUTO_INCREMENT for table `opstina`
 --
 ALTER TABLE `opstina`
-  MODIFY `opstina_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `opstina_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `preduzece`
 --
 ALTER TABLE `preduzece`
-  MODIFY `preduzece_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `preduzece_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `preduzece_delatnost`
 --
 ALTER TABLE `preduzece_delatnost`
-  MODIFY `preduzece_delatnost_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `preduzece_delatnost_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `preduzetnik`
 --
 ALTER TABLE `preduzetnik`
-  MODIFY `preduzetnik_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `preduzetnik_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `proizvod`
@@ -1951,13 +2026,13 @@ ALTER TABLE `proizvod`
 -- AUTO_INCREMENT for table `radno_vreme`
 --
 ALTER TABLE `radno_vreme`
-  MODIFY `readno_vreme_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `readno_vreme_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `regija`
 --
 ALTER TABLE `regija`
-  MODIFY `regija_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `regija_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `slike`
@@ -1969,7 +2044,7 @@ ALTER TABLE `slike`
 -- AUTO_INCREMENT for table `telefon`
 --
 ALTER TABLE `telefon`
-  MODIFY `telefon_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `telefon_sif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vrsta_proizvoda`

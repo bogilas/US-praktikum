@@ -451,6 +451,9 @@ img {
   margin: 0 0 5px 0;
   font-weight: 700;
 }
+.cp-titl {
+    font-size: 27px;
+}
 .ads-intermid .ads-address {
   font-size: 13px;
   line-height: 1.7;

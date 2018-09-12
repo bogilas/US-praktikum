@@ -31,6 +31,7 @@
             <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/preduzeca.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/AdminController.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/GuestController.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/ajaxCityCallResponse.php</file>
         </group>
     </open-files>
 </project-private>

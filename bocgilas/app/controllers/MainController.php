@@ -67,20 +67,7 @@
             $preduzece = BaseModel::getCPCompany($preduzece_id);
             $this->setData('preduzece', $preduzece);
         }
-        
-        public function preduzecaFiltrirana(){
-            $activity = filter_input(INPUT_POST, 'activity', FILTER_SANITIZE_STRING);
-            $type_product = filter_input(INPUT_POST, 'type_product', FILTER_SANITIZE_STRING);
-            $region= filter_input(INPUT_POST, 'region', FILTER_SANITIZE_STRING);
-            $city = filter_input(INPUT_POST, 'city_part', FILTER_SANITIZE_STRING);
-            $comp_name = filter_input(INPUT_POST, 'comp_name', FILTER_SANITIZE_STRING);
-            $day = filter_input(INPUT_POST, 'day', FILTER_SANITIZE_STRING);
-            $hours = filter_input(INPUT_POST, 'hours', FILTER_SANITIZE_STRING);
-            $preduzeca = BaseModel::getMPCompaniesFiltered($activity,$type_product,$region,$city,$city_part,$comp_name,$day,$hours);
-            $this->setData('preduzeca',$preduzeca);
-            
-        }
-        
+
         public function ajaxCityCallResponse($id){
             $this->setData('gradovi', BaseModel::getCitiesByRegion($id));
         }
