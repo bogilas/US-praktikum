@@ -94,12 +94,11 @@
         <?php endif; ?>
             
             
+        <div class="col-lg-8 col-md-8 col-xs-12 float-left row">
             <?php
                 if (is_array($DATA['preduzeca']))
                 foreach ($DATA['preduzeca'] as $preduzece):
             ?>
-            
-            <div class="col-lg-8 col-md-8 col-xs-12 float-left row">
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 col-bottom-margin">
                     <div class="ads-eleme">
                         <a href="<?php echo Configuration::BASE_URL ?>preduzece/<?php echo $preduzece->preduzece_sif ?>">
@@ -124,10 +123,9 @@
                             </div>
                         </a>
                     </div>
-                </div>
-            </div>
-              
+                </div>              
             <?php endforeach; ?>
+            </div>
           </div>
         </div>
       </div>

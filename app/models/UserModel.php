@@ -70,7 +70,7 @@ class UserModel extends BaseModel {
             $res = $prep->execute([$data['punNaziv'],$data['kratakNaziv'],$data['matBroj'],$data['pib'],$data['sajtLink'],$data['telefon'],$data['posebneNapomene'],$data['user'],0,$data['logotip'],$data['kratakOpis'],$main_loc_id,$data['delatnost']]);
             if($res){
                 $id = $pdo->lastInsertId();
-                $SQL = "INSERT INTO radno_vreme (preduzece_sif,'day',otvara,zatvara) VALUES(?,?,?,?)";
+                $SQL = "INSERT INTO radno_vreme (preduzece_sif,`day`,otvara,zatvara) VALUES(?,?,?,?)";
                 
                 if(($data['pOd']!=null) && ($data['pOd']!=null)){
                     $prep = DataBase::getInstance()->prepare($SQL);

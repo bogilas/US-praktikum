@@ -3,19 +3,34 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/opt/lampp/htdocs/bocgilas/app/views/_global/beforeContent.php</file>
-            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Admin/info.php</file>
-            <file>file:/opt/lampp/htdocs/bocgilas/app/models/BaseModel.php</file>
-            <file>file:/opt/lampp/htdocs/bocgilas/sys/Misc.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/User/otvoriProizvod.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/User/otvoriSliku.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/User/novoPreduzece.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/index.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/app/views/Admin/odobravanje.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/User/otvoriDelatnost.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/app/models/AdminModel.php</file>
-            <file>file:/opt/lampp/htdocs/bocgilas/app/models/UserModel.php</file>
-            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/preduzeca.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/assets/js/custom.js</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/_global/afterContent.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/assets/css/custom.css</file>
-            <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/AdminController.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/ajaxDistrictCallResponse.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/MainController.php</file>
             <file>file:/opt/lampp/htdocs/bocgilas/Routes.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/_global/beforeContent.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/preduzece.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/User/otvoriLokaciju.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Admin/info.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/models/BaseModel.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/UserController.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/assets/css/selectize.css</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/models/GuestModel.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/sys/Misc.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/User/otvoriTelefon.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/User/dodajKompaniju.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/models/UserModel.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/views/Main/preduzeca.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/AdminController.php</file>
+            <file>file:/opt/lampp/htdocs/bocgilas/app/controllers/GuestController.php</file>
         </group>
     </open-files>
 </project-private>
