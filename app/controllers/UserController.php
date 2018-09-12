@@ -20,6 +20,7 @@ class UserController extends Controller {
             Misc::redirect('preduzeca');
         }else if(!empty($_POST)){
                 $data = [];
+                
                 $data['user'] = Session::get('user_id');
                 $data['punNaziv'] = filter_input(INPUT_POST, '_punNaziv', FILTER_SANITIZE_STRING);
                 $data['kratakNaziv'] = filter_input(INPUT_POST, '_kratakNaziv', FILTER_SANITIZE_STRING);
@@ -51,11 +52,13 @@ class UserController extends Controller {
                 $data['suDo'] = filter_input(INPUT_POST, '_suDo', FILTER_SANITIZE_STRING);
                 $data['neOd'] = filter_input(INPUT_POST, '_neOd', FILTER_SANITIZE_STRING);
                 $data['neDo'] = filter_input(INPUT_POST, '_neDo', FILTER_SANITIZE_STRING);
-                if($id){
+                
+                $id = UserModel::insertCompany($data);
+//                if($id){
                     Session::set("inserting_comp",$id);
-                }else{
-                    Misc::redirect('dodajKompaniju');
-                }
+//                }else{
+//                    Misc::redirect('dodajKompaniju');
+//                }
         }else if(Session::exists('inserting_comp')){
             
         }else{
@@ -69,7 +72,7 @@ class UserController extends Controller {
         if(!Session::exists('inserting_comp')){
             Misc::redirect('dodajKompaniju');
         }else{
-            Session::unset('inserting_comp');
+            Session::delete('inserting_comp');
             Misc::redirect('mojaPreduzeca');
         }
     }
@@ -79,7 +82,7 @@ class UserController extends Controller {
             Misc::redirect('dodajKompaniju');
         }else if(!empty($_POST)){
             $idPred = Session::get('inserting_comp');
-            $idDel = filter_input(INPUT_POST, 'delatnost', FILTER_SANITIZE_STRING);
+            $idDel = filter_input(INPUT_POST, '_delatnost', FILTER_SANITIZE_STRING);
             UserModel::dodajDelatnostKompaniji($idPred,$idDel);
             Misc::redirect('novoPreduzece');
         }else{
@@ -120,7 +123,7 @@ class UserController extends Controller {
             Misc::redirect('dodajKompaniju');
         }else if(!empty($_POST)){
             $idPred = Session::get('inserting_comp');
-            $telefon = filter_input(INPUT_POST, 'telefon', FILTER_SANITIZE_STRING);
+            $telefon = filter_input(INPUT_POST, '_telefon', FILTER_SANITIZE_STRING);
             UserModel::dodajTelefonKompaniji($idPred,$telefon);
             Misc::redirect('novoPreduzece');
         }else{

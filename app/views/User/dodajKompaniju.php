@@ -7,57 +7,57 @@
                 <div class="col-lg-4 col-md-4 col-xs-12 float-left row">
                 <div class="form-group">
                     <label for="_punNaziv">Naziv</label>
-                    <input type="text" name="_punNaziv" class="form-control" id="_punNaziv" />
+                    <input type="text" name="_punNaziv" class="form-control" required="required" id="_punNaziv" />
                 </div>
                 <div class="form-group">
                     <label for="_kratakNaziv">Kratak naziv</label>
-                    <input type="text" name="_kratakNaziv" class="form-control" id="_kratakNaziv" />
+                    <input type="text" name="_kratakNaziv" class="form-control" required="required" id="_kratakNaziv" />
                 </div>
                 <div class="form-group">
                     <label for="_matBroj">Maticni broj</label>
-                    <input type="text" name="_matBroj" class="form-control" id="_matBroj" />
+                    <input type="text" name="_matBroj" class="form-control" required="required" id="_matBroj" />
                 </div>
                 <div class="form-group">
                     <label for="_pib">PIB</label>
-                    <input type="text" name="_pib" class="form-control" id="_pib" />
+                    <input type="text" name="_pib" class="form-control" required="required" id="_pib" />
                 </div>
                 <div class="form-group">
                     <label for="_sajtLink">Link sajta</label>
-                    <input type="text" name="_sajtLink" class="form-control" id="_sajtLink" />
+                    <input type="text" name="_sajtLink" class="form-control" required="required" id="_sajtLink" />
                 </div>
                 <div class="form-group">
                     <label for="_telefon">Telefon</label>
-                    <input type="text" name="_telefon" class="form-control" id="_telefon" />
+                    <input type="text" name="_telefon" class="form-control" required="required" id="_telefon" />
                 </div>
                 <div class="form-group">
                     <label for="_posebneNapomene">Posebne napomene</label>
-                    <input type="text" name="_posebneNapomene" class="form-control" id="_posebneNapomene" />
+                    <input type="text" name="_posebneNapomene" class="form-control" required="required" id="_posebneNapomene" />
                 </div>
                 <div class="form-group">
                     <label for="_logotip">Logo</label>
-                    <input type="file" name="_logotip" class="form-control" id="_logotip" />
+                    <input type="file" name="_logotip" class="form-control" id="_logotip" required="required" />
                 </div>
                 <div class="form-group">
                     <label for="_kratakOpis">Kratak opis</label>
-                    <input type="text" name="_kratakOpis" class="form-control" id="_kratakOpis" />
+                    <input type="text" name="_kratakOpis" class="form-control" id="_kratakOpis" required="required" />
                 </div>                     
                 </div>
                 <div class="col-lg-8 col-md-8 col-xs-12 float-left row">
                     <div class="form-group col-xs-4 col-md-4 col-xs-6 float-left">
                         <label for="_adresa">Adresa</label>
-                        <input id="_adresa" type="text" class="form-control" name="_adresa" />
+                        <input id="_adresa" type="text" class="form-control" name="_adresa" required="required" />
                     </div>
   
                     <div class="form-group col-lg-4 col-md-4 col-xs-6 float-left">
                         <label for="_lokacija_sirina">Lokacija sirina</label>
-                        <input id="_lokacija_sirina" type="text" class="form-control" name="_lokacija_sirina" />
+                        <input id="_lokacija_sirina" type="text" class="form-control" name="_lokacija_sirina" required="required" />
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-xs-6 float-left">
                         <label for="_lokacija_duzina">Lokacija duzina</label>
-                        <input id="_lokacija_duzina" type="text" class="form-control" name="_lokacija_duzina" />                        
+                        <input id="_lokacija_duzina" type="text" class="form-control" name="_lokacija_duzina" required="required" />                        
                     </div>
 
-                <select id="_filter_delatnosti" name="_delatnost" class="demo-default selectized" placeholder="Delatnost" tabindex="-1" style="display: none;">
+                <select id="_filter_delatnosti" name="_delatnost" class="demo-default selectized" placeholder="Delatnost" tabindex="-1" style="display: none;" required="required" >
                   <option value="" selected="selected"></option>
                     <?php
                         if (is_array($DATA['delatnosti']))
@@ -70,7 +70,7 @@
               </select>                        
 
                     
-                <select id="_filter_regija" name="_regija" onchange="getResCity($(this).val())" placeholder="Izaberite regiju" tabindex="-1" class="selectized" style="display: none;">
+                <select id="_filter_regija" name="_regija" onchange="getResCity($(this).val())" placeholder="Izaberite regiju" tabindex="-1" class="selectized" style="display: none;" required="required">
                   <option value="" selected="selected"></option>
                   <?php 
                         if (is_array($DATA['regioni']))
@@ -83,13 +83,13 @@
               </select>
                 <div class="form-group spec-form">
                     <label for="_filter_gradovi">Grad</label>
-                    <select class="form-control" name="_grad" onchange="getResDistrict($(this).val())" id="_filter_gradovi" placeholder="Grad">
+                    <select class="form-control" name="_grad" onchange="getResDistrict($(this).val())" id="_filter_gradovi" placeholder="Grad" required="required">
                     <option value="" selected="selected"></option>
                 </select>
                 </div>
                 <div class="form-group spec-form">
                     <label for="_filter_opstina">Opstina</label>
-                    <select class="form-control" name="_opstina" id="_filter_opstina" placeholder="Opstina">
+                    <select class="form-control" name="_opstina" id="_filter_opstina" placeholder="Opstina" required="required">
                     <option value="" selected="selected"></option>
                 </select>
                     

@@ -19,13 +19,13 @@
                     ?>
                     <tr>
                         <th scope="row">
-                            <?php $pred->preduzece_sif ?>
+                            <?php echo $pred->preduzece_sif ?>
                         </th>
                         <td>
-                            <?php $pred->kratak_naziv ?>
+                            <?php echo $pred->kratak_naziv ?>
                         </td>
                         <td>
-                            <?php $pred->kratak_opis ?>
+                            <?php echo $pred->kratak_opis ?>
                         </td>
                         <td>
                             <a class="btn btn-info" href="<?php echo Configuration::BASE_URL ?>odobravanje/<?php echo $pred->preduzece_sif ?>">Pregledaj</a>

@@ -8,10 +8,7 @@
 
       <div class="container">
         <div class="row">
-            <form action="/odobriZahtev" method="GET">
-                <button class="btn btn-success" type="submit">ODOBRI PREDUZECE</button>
-                <input type="hidden" value="<?php echo $pd->preduzece_sif ?>" />
-            </form>
+            <a class="btn btn-success" href="<?php echo Configuration::BASE_URL ?>odobriZahtev/<?php echo $pd->preduzece_sif ?>">ODOBRI PREDUZECE</a>
         </div>  
 
         <div class="row">

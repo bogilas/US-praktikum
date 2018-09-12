@@ -14,7 +14,7 @@
             <div class="col-lg-4 col-md-4 col-xs-12 float-left row" style="padding: 15px;">
                 <form class="w-100" action="<?php echo Configuration::BASE_URL ?>preduzeca" method="POST">
                 <label for="_filter_delatnosti">Delatnost</label>
-              <select id="_filter_delatnosti" name="_delatnost" class="demo-default selectized" placeholder="Delatnost" tabindex="-1" style="display: none;">
+              <select id="_filter_delatnosti" name="_delatnost" class="demo-default selectized" tabindex="-1" style="display: none;">
                   <option value="" selected="selected"></option>
                     <?php
                         if (is_array($DATA['delatnosti']))
@@ -26,7 +26,7 @@
                     <?php endforeach; ?>
               </select>
                 <label for="_filter_vrstaProizvoda">Vrsta proizvoda</label>
-                <select id="_filter_vrstaProizvoda" name="_proizvod" class="demo-default selectized" placeholder="Vrsta prozivoda" tabindex="-1" style="display: none;">
+                <select id="_filter_vrstaProizvoda" name="_proizvod" class="demo-default selectized" tabindex="-1" style="display: none;">
                   <option value="" selected="selected"></option>
                     <?php
                         if (is_array($DATA['proizvodi']))
@@ -39,7 +39,7 @@
               </select>
                 
                 <label for="_filter_regija">Regija</label>
-                <select id="_filter_regija" name="_regija" onchange="getResCity($(this).val())" placeholder="Izaberite regiju" tabindex="-1" class="selectized" style="display: none;">
+                <select id="_filter_regija" name="_regija" onchange="getResCity($(this).val())" tabindex="-1" class="selectized" style="display: none;">
                   <option value="" selected="selected"></option>
                   <?php 
                         if (is_array($DATA['regioni']))
@@ -52,23 +52,23 @@
               </select>
                 <div class="form-group spec-form">
                     <label for="_filter_gradovi">Grad</label>
-                    <select class="form-control" name="_grad" onchange="getResDistrict($(this).val())" id="_filter_gradovi" placeholder="Grad">
+                    <select class="form-control" name="_grad" onchange="getResDistrict($(this).val())" id="_filter_gradovi">
                     <option value="" selected="selected"></option>
                 </select>
                 </div>
                 <div class="form-group spec-form">
                     <label for="_filter_opstina">Opstina</label>
-                    <select class="form-control" name="_opstina" id="_filter_opstina" placeholder="Opstina">
+                    <select class="form-control" name="_opstina" id="_filter_opstina">
                     <option value="" selected="selected"></option>
                 </select>
                 </div>
                 <div class="form-group spec-form">
                     <label for="_filter_kompanija">Kompanija</label>
-                    <input type="search" name="_komp_ime" class="form-control" id="_filter_kompanija" placeholder="Ime kompanije">
+                    <input type="search" name="_komp_ime" class="form-control" id="_filter_kompanija">
                 </div>
                 <div class="form-group spec-form">
                     <label for="_filter_dani">Dani</label>
-                    <select class="form-control" name="_dani" id="_filter_dani" placeholder="Dani">
+                    <select class="form-control" name="_dani" id="_filter_dani">
                     <option value="" selected="selected">Bilo koji</option>
                     <option value="0" >Ponedeljak</option>
                     <option value="1" >Utorak</option>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-group spec-form">
                     <label for="_filter_vreme">Vreme</label>
-                    <input type="number"  min="0" max="24" name="_sat" class="form-control" placeholder="Radno vreme" >
+                    <input type="number" id="_filter_vreme" min="0" max="24" name="_sat" class="form-control" placeholder="Radno vreme" >
                 </div>
                 <button class="btn btn-info" type="submit">Filtriraj</button>
                 </form>

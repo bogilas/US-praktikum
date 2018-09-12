@@ -557,7 +557,7 @@ img {
     padding: 10px;
     overflow: hidden;
 }
-.pd-infos .pd-info-content p {
+.pd-infos .pd-info-content > div {
     line-height: 24px;
     margin: 0 0 24px 0;
     padding: 0;

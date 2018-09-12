@@ -45,11 +45,35 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo Configuration::BASE_URL ?>preduzeca">Preduzeća</a>
             </li>
-            <li class="nav-item">
+            <?php if (!session::exists('user_id') && !session::exists('admin_id')): ?>
+               <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#prijavaModal">
                     Prijava
                 </a>
             </li>
+            <?php endif; ?>
+            <?php if (session::exists('admin_id')): ?>
+            <li class="nav-item">
+                   <a href="<?php Configuration::BASE_URL ?>info" class="nav-link">
+                    Info
+                </a>
+            </li>            
+            <?php endif; ?>
+            <?php if (session::exists('user_id')): ?>
+               <li class="nav-item">
+                   <a href="<?php Configuration::BASE_URL ?>dodajKompaniju" class="nav-link">
+                    Dodaj
+                </a>
+            </li>
+            <?php endif; ?>             
+            <?php if (session::exists('user_id') || session::exists('admin_id')): ?>
+               <li class="nav-item">
+                   <a href="<?php Configuration::BASE_URL ?>logout" class="nav-link">
+                    Izloguj se
+                </a>
+            </li>
+            <?php endif; ?>            
+            
           </ul>
         </div>
       </div>

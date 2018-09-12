@@ -11,6 +11,7 @@ class AdminController extends Controller{
 
     public function odobriZahtev($id){
         AdminModel::setCompanyActive($id);
+        Misc::redirect('info');
     }
 
     public function info(){

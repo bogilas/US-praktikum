@@ -60,46 +60,47 @@
                 <div class="pd-main">
                     <div class="pd-infos">
                         <div class="pd-info-content">
-                            <p>
-                                <strong><?php echo $pd->pun_naziv ?></strong>
+                            <div>
+                                  <strong><?php echo $pd->pun_naziv ?></strong>
                                 <br /><br />
                                 <?php echo $pd->kratak_opis ?>
-                            </p>
-                            <p>
-                                <strong>Osnovno:</strong>
-                                <br />
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    Adresa: <?php echo $pd->adresa ?>
-                                </li>
-                                <li class="list-group-item">
-                                    Regija: <?php echo $pd->regija_naziv ?>
-                                </li>
-                                <li class="list-group-item">
-                                    Grad: <?php echo $pd->grad_naziv ?>
-                                </li>
-                                <li class="list-group-item">
-                                    Opstina: <?php echo $pd->opstina_naziv ?>
-                                </li>
-                            </ul>
-                            </p>
-                            <p>
-                                <strong>Ostale delatnosti: </strong>
-                                <br />
-                            <ul class="list-group">
-                                <?php 
-                                    if (is_array($DATA['preduzece']['work_type']))
-                                    foreach ($DATA['preduzece']['work_type'] as $delat):
-                                ?>                                
-                                <li class="list-group-item">
-                                    Sifra: <strong><?php echo $delat->sifra ?></strong> - <?php echo $delat->Naziv ?>
-                                </li>
+                            </div>
+                            <div>
                                 
-                                <?php endforeach; ?>
-                            </ul>  
-                            </p>
-                            <p>
-                                <strong>Ostale lokacije:</strong>
+                                 <strong>Osnovno:</strong>
+                                <br />
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        Adresa: <?php echo $pd->adresa ?>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Regija: <?php echo $pd->regija_naziv ?>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Grad: <?php echo $pd->grad_naziv ?>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Opstina: <?php echo $pd->opstina_naziv ?>
+                                    </li>
+                                </ul> 
+                            </div>
+                            <div>
+                                 <strong>Ostale delatnosti: </strong>
+                                <br />
+                                <ul class="list-group">
+                                    <?php 
+                                        if (is_array($DATA['preduzece']['work_type']))
+                                        foreach ($DATA['preduzece']['work_type'] as $delat):
+                                    ?>                                
+                                    <li class="list-group-item">
+                                        Sifra: <strong><?php echo $delat->sifra ?></strong> - <?php echo $delat->Naziv ?>
+                                    </li>
+
+                                    <?php endforeach; ?>
+                                </ul> 
+                            </div>
+                                <div>
+                                     <strong>Ostale lokacije:</strong>
                                 <br />
                             
                                 <?php
@@ -120,8 +121,8 @@
                                         Opstina: <?php echo $lok->opstina_naziv ?>
                                     </li>
                                 </ul>
-                                <?php endforeach; ?>
-                            </p>
+                                <?php endforeach; ?> 
+                                </div>                               
                         </div>
                     </div>
                     <div class="pd-pics">

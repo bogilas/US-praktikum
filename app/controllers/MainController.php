@@ -1,5 +1,6 @@
 <?php
     class MainController extends Controller {
+                
         public function prijava() {
             if (!empty($_POST)) {
                 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
@@ -17,10 +18,16 @@
                         Misc::redirect('');
                     }else{
                         Session::set('error',"email i sifra ne pripadaju nijednom korisniku");
-                        Miss::redirec('');
+                        Misc::redirec('');
                     }
                 }
             }
+        }   
+        
+        public function index() {
+            $data = BaseModel::getMRPCompaniesPerType();
+            $this->setData('preduzeca', $data);
+            parent::index();
         }
         
         public function logout() {

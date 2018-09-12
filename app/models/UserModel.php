@@ -58,19 +58,19 @@ class UserModel extends BaseModel {
     }
     
     public static function insertCompany($data){
-        $SQL = "INSERT INTO lokacija(opstina_sif, adresa, kordinata_duzina, kordinata_sirina) VALUES (?,?,?,?)";
+        $SQL = "INSERT INTO lokacija (opstina_sif,adresa, kordinata_duzina, kordinata_sirina) VALUES (?,?,?,?)";
         $pdo = DataBase::getInstance();
         $prep = $pdo->prepare($SQL);
-        $res = $prep->execute([$data['opstina'],$data['adresa'],$data['kordinata_duzina'],$data['kordinata_sirina']]);
+        $res = $prep->execute([$data['opstina'],$data['adresa'],$data['lokacija_duzina'],$data['lokacija_sirina']]);
         if($res){
             $main_loc_id = $pdo->lastInsertId();
-            $SQL = "INSERT INTO preduzece(pun_naziv, kratak_naziv, mat_br, pib, sajt_link, telefon, posebne_napomene, preduzetnik_sif,'status',logotip, kratak_opis, glavna_lokacija_sif, glavna_delatnost_sif) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $SQL = "INSERT INTO preduzece (pun_naziv, kratak_naziv, mat_br, pib, sajt_link, telefon, posebne_napomene, preduzetnik_sif,`status`,logotip, kratak_opis, glavna_lokacija_sif, glavna_delatnost_sif) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $pdo = DataBase::getInstance();
             $prep = $pdo->prepare($SQL);
-            $res = $prep->execute([$data['punNaziv'],$data['kratakNaziv'],$data['matBr'],$data['pib'],$data['sajtLink'],$data['telefon'],$data['posenbneNapomene'],$data['user'],0,$data['logotip'],$data['kratakOpis'],$main_loc_id,$data['delatnost']]);
+            $res = $prep->execute([$data['punNaziv'],$data['kratakNaziv'],$data['matBroj'],$data['pib'],$data['sajtLink'],$data['telefon'],$data['posebneNapomene'],$data['user'],0,$data['logotip'],$data['kratakOpis'],$main_loc_id,$data['delatnost']]);
             if($res){
                 $id = $pdo->lastInsertId();
-                $SQL = "INSERT INTO radno_vreme(preduzece_sif,'day',otvara,zatvara) VALUES(?,?,?,?)";
+                $SQL = "INSERT INTO radno_vreme (preduzece_sif,'day',otvara,zatvara) VALUES(?,?,?,?)";
                 
                 if(($data['pOd']!=null) && ($data['pOd']!=null)){
                     $prep = DataBase::getInstance()->prepare($SQL);
@@ -126,14 +126,14 @@ class UserModel extends BaseModel {
     public static function dodajTelefonKompaniji($idPred,$telefon){
         $SQL = "INSERT INTO telefon (telefon,preduzece_sif) VALUES (?,?)";
         $prep = DataBase::getInstance()->prepare($SQL);
-        $res = $prep->execute([$telefon,$company_id]); 
+        $res = $prep->execute([$telefon,$idPred]); 
     }
 
     public static function dodajLokacijuKompaniji($idPred,$data){
         $SQL = "INSERT INTO lokacija(opstina_sif, adresa, kordinata_duzina, kordinata_sirina,preduzece_sif) VALUES (?,?,?,?,?)";
         $pdo = DataBase::getInstance();
         $prep = $pdo->prepare($SQL);
-        $res = $prep->execute([$data['opstina'],$data['adresa'],$data['kordinata_duzina'],$data['kordinata_sirina']],$idPred);
+        $res = $prep->execute([$data['opstina'],$data['adresa'],$data['lokacija_duzina'],$data['lokacija_sirina'],$idPred]);
     }
 
     public static function deleteLocation($id){
@@ -170,12 +170,10 @@ class UserModel extends BaseModel {
     }
 
     public static function insertUser($ime,$prezime,$sifra,$telefon,$adresa,$email){
-        var_dump($ime);
         $SQL = "INSERT INTO preduzetnik (ime,prezime,sifra,telefon,adresa,email) VALUES (?,?,?,?,?,?)";
         $pdo = DataBase::getInstance();
         $prep = $pdo->prepare($SQL);
         $res = $prep->execute([$ime,$prezime,$sifra,$telefon,$adresa,$email]);
-        var_dump($res);
         if($res){
             return $pdo->lastInsertId();
         }

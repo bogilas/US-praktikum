@@ -17,6 +17,7 @@ class AdminModel extends BaseModel{
         $SQL ="UPDATE preduzece P SET P.status = 1 WHERE P.preduzece_sif = ?";
         $prep=DataBase::getInstance()->prepare($SQL);
         $prep->execute([$id]);
+        
     }
 
     public static function getInactiveCompany($id){
